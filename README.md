@@ -18,6 +18,13 @@ A reusable starting point for projects in the Mechanical Engineering Department.
 - **Status:** Planning
 - **Last updated:** [YYYY-MM-DD]
 
+## Simulation Demonstration
+
+<details>
+  <summary><b>คลิกเพื่อดูวิดีโอ Simscape Simulation (SPM_allR)</b></summary>
+  <br>
+  <video src="https://github.com/jinjtp/Solar-Panel-Pan-Tilt-Mechanism/raw/main/media/SPM_allR.mp4" controls="controls" style="max-width: 100%;"></video>
+</details>
 ## Repository structure
 
 | Path | Purpose |
