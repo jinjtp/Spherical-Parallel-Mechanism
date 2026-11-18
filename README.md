@@ -1,6 +1,6 @@
 # Solar Panel Pan-Tilt Mechanism
 
-โปรเจกต์ออกแบบและจำลองการทำงานของกลไกปรับมุมรับแสงอาทิตย์แบบ 2 แกน (Pan-Tilt Mechanism) ด้วย MATLAB / Simscape
+โปรเจกต์ออกแบบและจำลองการทำงานของกลไกปรับมุมรับแสงอาทิตย์แบบ 2 แกน (Pan-Tilt Mechanism) 
 
 ## Project overview
 
