@@ -1,25 +1,22 @@
-# Solar Panel Pan-Tilt Mechanism
+# Mechanical Engineering Project Template
 
-โปรเจกต์ออกแบบและจำลองการทำงานของกลไกปรับมุมรับแสงอาทิตย์แบบ 2 แกน (Pan-Tilt Mechanism) 
+A reusable starting point for projects in the Mechanical Engineering Department. Use this repository as a template to organize a project’s mechanical design, electronics, software, machine skills, simulation, documentation, experiments, and publications.
+
+## Getting started
+
+1. Select **Use this template** on GitHub to create a repository for your project.
+2. Rename the project in this README and update the project summary, team, and objectives.
+3. Review the folder READMEs and replace the examples with project-specific information.
+4. Create GitHub Issues for tasks and record important design decisions and test results.
+5. Check the license placeholder and select appropriate terms before sharing or reusing project work.
 
 ## Project overview
 
-- **Project name:** Solar Panel Pan-Tilt Mechanism
-- **Problem / purpose:** ออกแบบกลไกและจำลองการเคลื่อนที่เพื่อปรับทิศทางแผงโซลาร์เซลล์ให้ตั้งฉากกับแสงอาทิตย์ เพื่อเพิ่มประสิทธิภาพการผลิตพลังงาน
-- **Team:** 
-  - [ใส่ชื่อ-นามสกุล สมาชิกคนที่ 1] - [หน้าที่รับผิดชอบ]
-  - [ใส่ชื่อ-นามสกุล สมาชิกคนที่ 2] - [หน้าที่รับผิดชอบ]
-  - [ใส่ชื่อ-นามสกุล สมาชิกคนที่ 3] - [หน้าที่รับผิดชอบ]
-- **Status:** In Progress (Simulation)
-- **Last updated:** 2026-11-18
-
-## Simulation Demonstration
-
-<details>
-  <summary><b>คลิกเพื่อดูวิดีโอ Simscape Simulation (SPM_allR)</b></summary>
-  <br>
-  <video src="https://github.com/jinjtp/Solar-Panel-Pan-Tilt-Mechanism/raw/main/media/SPM_allR.mp4" controls="controls" style="max-width: 100%;"></video>
-</details>
+- **Project name:** [Enter project name]
+- **Problem / purpose:** [Describe the engineering need]
+- **Team:** [Names and responsibilities]
+- **Status:** Planning
+- **Last updated:** [YYYY-MM-DD]
 
 ## Repository structure
 
@@ -33,14 +30,15 @@
 | `machine-skills/` | Machine commands, procedures, and skill instructions |
 | `simulation/` | Models, scripts, assumptions, and simulation results |
 | `docs/` | Assembly, setup, operation, and maintenance instructions |
-| `media/` | Images, GIFs, and demonstration videos |
+| `media/` | Images, GIFs, and links to demonstration videos |
 | `experiments/` | Procedures, raw data, and results |
 | `publications/` | Project-related journal and conference papers |
 
 ## Collaboration and file practices
 
-Use descriptive filenames and commit messages. Record units, revisions, software versions, and assumptions. Keep editable source files where practical. Avoid committing credentials, private data, temporary files, or duplicate exports.
+Use descriptive filenames and commit messages. Record units, revisions, software versions, and assumptions. Keep editable source files where practical. Avoid committing credentials, private data, temporary files, or duplicate exports. Consider Git LFS for large CAD, simulation, and video files.
 
 ## Safety and validation
 
 Document hazards, safeguards, and operating limits before testing hardware. Validate important calculations and simulation results against measurements where practical.
+
