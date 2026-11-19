@@ -54,13 +54,13 @@ The red link rotates back and forth about J1 while J3 is held at +90°.
 
 [Watch the J1 sweep (MP4)](media/j1_sweep_top.mp4)
 
-#### J3 Sweep on Left View
+#### J3 Sweep — Isometric View
 
-![J3 sweep from the left view](media/j3_sweep_left.gif)
+![J3 sweep from the isometric view](media/j3_sweep_iso.gif)
 
 The yellow link rotates back and forth about J3 while J1 is held at 0°.
 
-[Watch the J3 sweep (MP4)](media/j3_sweep_left.mp4)
+[Watch the J3 sweep (MP4)](media/j3sweep_iso.mp4)
 
 
 | File | Description |
