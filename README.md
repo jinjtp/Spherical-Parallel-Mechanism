@@ -2,6 +2,16 @@
 
 Term Project 2569 · 2103-322 Design of Mechanism
 
+## Repository structure
+
+| Path | Purpose |
+| --- | --- |
+| `hardware/mechanical/` | CAD models, drawings, and fabrication files |
+| `simulation/` | Models, scripts, assumptions, and simulation results |
+| `docs/` | Assembly, setup, operation, and maintenance instructions |
+| `media/` | Images, GIFs, and links to demonstration videos |
+| `publications/` | Project-related journal and conference papers |
+
 ## Project overview
 
 - **Project name** — Spherical Parallel Mechanism for Pan–Tilt Motion
@@ -23,7 +33,54 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ### Symbolic Math
 
+#### Symbolic Math overview
+The panel is held by two kinematic chains (legs) that both start on the fixed base. Two input angles are applied at the base:
+- θ1 at joint J1, which pans the panel
+- θ2 at joint J3, which tilts the panel through the second leg
+  
+#### Requirements
+- MATLAB (developed in R2026a; R2016b or newer should work)
+- Symbolic Math Toolbox
+  
+#### How to run
+1. Open Symbolic_Math_v6_1.mlx in MATLAB.
+2. Adjust the settings in section 0 if needed (see below).
+3. Click Run All.
+
+The live script is organised in sections:
+
+| Section | Content |
+| --- | --- |
+| 0 | Settings |
+| 1 | Parameters |
+| 2 | Mechanism details and DOF calculation |
+| 3 | Symbolic kinematics |
+| 4 | Symbolic Jacobian, velocity and acceleration |
+| 5 | Summary table |
+| 6 | Graphs |
+| 7 | Animation |
+
+Comments were provided inside the script for better understanding of its function.
+
 #### Kinematic analysis
+
+##### Mechanism
+
+All joints are revolute, and every joint axis passes through the centre point O = (0, 0, 0), which makes this a spherical mechanism.
+
+| Joint | Connects | Axis | Point on axis (mm) | Role |
+| --- | --- | --- | --- | --- |
+| J1 | Base – Link2 | Y | (0, −45, 0) | active, θ1 (pan) |
+| J2 | 	Link2 – Platform | X | (30, 0, 0) | passive (= tilt)) |
+| J3 | 	Base – Link4+5 | X | (−49, 0, 0) | active, θ2 |
+| J4 | 	Link4+5 – Link3 | Z | (0, 0, −30) | passive |
+| J5 | 	Link3 – Platform | Y | (0, 25, 0) | 	passive |
+
+The inputs are
+
+```math
+\theta_1(t) = A_1 \sin(\omega_1 t), \qquad \theta_2(t) = A_2 \sin(\omega_2 t)
+```
 
 <!-- Add the mechanism diagram, link and joint labels, degree-of-freedom calculation, and kinematic equations here. -->
 
@@ -94,12 +151,3 @@ The time histories quantify the platform response when both inputs are active. T
 * **Tilt Motion (Center):** Articulated tilt state demonstrating high-angle pitching of the central ring via the curved linkage chains without link interference[cite: 3].
 * **Pan Motion (Right):** 90-degree pan rotation showing decoupled yaw movement around the vertical axis while maintaining smooth joint alignment[cite: 4].
 
-## Repository structure
-
-| Path | Purpose |
-| --- | --- |
-| `hardware/mechanical/` | CAD models, drawings, and fabrication files |
-| `simulation/` | Models, scripts, assumptions, and simulation results |
-| `docs/` | Assembly, setup, operation, and maintenance instructions |
-| `media/` | Images, GIFs, and links to demonstration videos |
-| `publications/` | Project-related journal and conference papers |
