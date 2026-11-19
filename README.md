@@ -84,9 +84,15 @@ The time histories quantify the platform response when both inputs are active. T
 
 ### Physical prototype
 
-| View 1 | View 2 | View 3 |
+3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360.
+
+| Neutral Pose | Tilt Motion | Pan Motion (90° Rotation) |
 | :---: | :---: | :---: |
-| ![View 1](media/Fusion360%20View1.png) | ![View 2](media/Fusion360%20View2.png) | ![View 3](media/Fusion360%20View3.png) |
+| ![Neutral Pose](media/Fusion360%20View1.png) | ![Tilt Motion](media/Fusion360%20View2.png) | ![Pan Motion](media/Fusion360%20View3.png) |
+
+* **Neutral Pose (Left):** Home configuration with the central end-effector ring aligned horizontally and all spherical axes intersecting at the center[cite: 2].
+* **Tilt Motion (Center):** Articulated tilt state demonstrating high-angle pitching of the central ring via the curved linkage chains without link interference[cite: 3].
+* **Pan Motion (Right):** 90-degree pan rotation showing decoupled yaw movement around the vertical axis while maintaining smooth joint alignment[cite: 4].
 
 ## Repository structure
 
