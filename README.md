@@ -84,7 +84,9 @@ The time histories quantify the platform response when both inputs are active. T
 
 ### Physical prototype
 
-<!-- Add photos or a video of the prototype here. Show how pan and tilt are adjusted and describe what you observed during testing. -->
+| View 1 | View 2 | View 3 |
+| :---: | :---: | :---: |
+| ![View 1](media/Fusion360%20View1.png) | ![View 2](media/Fusion360%20View2.png) | ![View 3](media/Fusion360%20View3.png) |
 
 ## Repository structure
 
