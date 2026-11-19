@@ -151,6 +151,10 @@ The time histories quantify the platform response when both inputs are active. T
 
 Manual actuation tests were conducted by rotating the two base input axes to verify the motion of the central ring:
 
-| State 1 | State 2 | State 3 | State 4 | State 5 |
-| :---: | :---: | :---: | :---: | :---: |
-| ![Hardware move 1](media/Hardware%20move1.jpg) | ![Hardware move 2](media/Hardware%20move2.jpg) | ![Hardware move 3](media/Hardware%20move3.jpg) | ![Hardware move 4](media/Hardware%20move4.jpg) | ![Hardware move 5](media/Hardware%20move5.jpg) |
+| State 1 | State 2 | State 3 |
+| :---: | :---: | :---: |
+| ![Hardware move 1](media/Hardware%20move1.jpg) | ![Hardware move 2](media/Hardware%20move2.jpg) | ![Hardware move 3](media/Hardware%20move3.jpg) |
+
+| State 4 | State 5 |
+| :---: | :---: |
+| ![Hardware move 4](media/Hardware%20move4.jpg) | ![Hardware move 5](media/Hardware%20move5.jpg) |
