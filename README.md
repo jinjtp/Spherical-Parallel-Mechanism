@@ -43,57 +43,50 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ### Simscape Multibody
 
-#### Simscape Model
+For the proposed solar-tracking application, the platform must be able to change its orientation in both pan and tilt. The Simscape Multibody model was used to relate these platform angles to the rotation of the two actuated joints at the base.
 
-The model takes joint-angle inputs at J1 and J3 and measures the platform's pan and tilt angles.
+![Isometric animation of the spherical parallel mechanism](media/iso.gif)
 
-![Simscape Multibody block diagram showing the J1 and J3 inputs and the platform pan and tilt outputs](media/simscape_model.png)
+#### Model Configuration
 
-#### Pan and Tilt Results
+The fixed base and moving platform are connected by two chains of rigid bodies that form a closed-loop mechanism with five revolute joints. Angular motion is prescribed at J1 and J3. The passive joints, J2, J4, and J5, move according to the constraints of the linkage. The platform orientation is measured relative to the fixed base and expressed as pan and tilt.
 
-| Platform Pan | Platform Tilt and J3 Angle |
+![Simscape Multibody block diagram showing the joint-angle inputs and the platform-angle outputs](media/simscape_model.png)
+
+#### Platform Response Under Combined Inputs
+
+J1 and J3 were driven simultaneously with sinusoidal angle commands. The amplitudes were 0.698 rad (40°) at J1 and 0.611 rad (35°) at J3. Both commands had an angular frequency of 0.4 rad/s, corresponding to a period of approximately 15.7 s. The plots show one cycle, with time in seconds and angles in radians.
+
+| Platform Pan | Platform Tilt and Measured J3 Angle |
 | :---: | :---: |
-| ![Platform pan angle versus time in radians](media/scope_pan.png) | ![Platform tilt and measured J3 angle versus time in radians](media/scope_tilt_theta2.png) |
+| ![Platform pan angle plotted against time](media/scope_pan.png) | ![Platform tilt and measured J3 angle plotted against time](media/scope_tilt_theta2.png) |
 
-The horizontal axis shows time in seconds, and the vertical axis shows angle in radians. In the right plot, the yellow trace is platform tilt and the blue trace is the measured J3 angle (θ₂).
+The pan amplitude was approximately 0.70 rad, close to the commanded J1 amplitude. In the right plot, the platform tilt (yellow) had an amplitude of approximately 0.74 rad, compared with 0.61 rad for the measured J3 angle (blue, θ₂). For this test, the platform tilt amplitude exceeded the J3 rotation amplitude by approximately 0.13 rad.
 
-![Isometric view of the pan–tilt mechanism in motion](media/iso.gif)
+#### Single-Joint Sweep Tests
 
-The model uses CAD parts connected by five revolute joints (J1–J5). We applied sinusoidal angle inputs at J1 and J3. The other three joints move as the links guide the platform. In the simulation shown here, the input angles vary between ±40° at J1 and ±35° at J3. Both input signals have an angular frequency of 0.4 rad/s.
+The time histories quantify the platform response when both inputs are active. The sweeps below show the motion of the links and platform when each input is applied separately. Both tests started from Position A, with J1 at 0° and J3 at +90°. In each test, one joint was swept while the other was held at its starting angle.
 
-### Joint Sweep Tests
+| J1 Sweep — Top View | J3 Sweep — Isometric View |
+| :---: | :---: |
+| ![Top view of the J1 sweep with J3 held at 90 degrees](media/j1_sweep_top.gif) | ![Isometric view of the J3 sweep with J1 held at zero degrees](media/j3_sweep_iso.gif) |
+| With J3 fixed at +90°, the top view shows the platform turning relative to the base. | With J1 fixed at 0°, the isometric view shows the change in platform inclination. |
+| [J1 sweep video (MP4)](media/j1_sweep_top.mp4) | [J3 sweep video (MP4)](media/j3sweep_iso.mp4) |
 
-Both tests start at Position A, with J1 at 0° and J3 at +90°. One joint moves at a time while the other stays fixed.
+#### Reproducing the Combined-Input Simulation
 
-#### J1 Sweep on Top View
-
-![J1 sweep from the top view](media/j1_sweep_top.gif)
-
-The red link rotates back and forth about J1 while J3 is held at +90°.
-
-[Watch the J1 sweep (MP4)](media/j1_sweep_top.mp4)
-
-#### J3 Sweep on Isometric View
-
-![J3 sweep from the isometric view](media/j3_sweep_iso.gif)
-
-The yellow link rotates back and forth about J3 while J1 is held at 0°.
-
-[Watch the J3 sweep (MP4)](media/j3sweep_iso.mp4)
-
+1. Download and extract the repository. Open MATLAB with Simulink, Simscape, and Simscape Multibody installed.
+2. Set the MATLAB Current Folder to `simulation/`. Open `SPM_allR.slx` and click **Run**.
+3. Open **Scope pan** to view the platform pan angle and **Scope tilt,θ2** to compare the platform tilt with the measured J3 angle.
 
 | File | Description |
 | --- | --- |
-| [Mechanism.avi](media/Mechanism.avi) | Demonstration video for submission |
-| [Render.jpg](media/Render.jpg) | Still image of the mechanism from the isometric view |
-| [Isometric](media/iso.mp4) · [Top](media/Top.mp4) · [Left](media/left.mp4) | Simulation videos from three views |
 | [SPM_allR.slx](simulation/SPM_allR.slx) | Simscape Multibody model |
-| [spm_params.m](simulation/spm_params.m) | Joint locations and simulation parameters |
-| [CAD files](simulation/cad/) | Part geometry used in the model |
-
-After running the model, open **Scope pan** to see the platform pan angle over time. Open **Scope tilt,θ2** to compare the platform tilt and the measured angle at J3 on the same time axis. If the model cannot find a CAD file, check the **File Name** field in the corresponding File Solid block. It should point to a file in `cad/`, such as `cad/Frame.step`.
-
-[MathWorks documentation for the File Solid block](https://www.mathworks.com/help/sm/ref/filesolid.html)
+| [spm_params.m](simulation/spm_params.m) | Model geometry and input parameters |
+| [CAD files](simulation/cad/) | Geometry of the rigid bodies |
+| [Mechanism.avi](media/Mechanism.avi) | Submission demonstration video |
+| [Render.jpg](media/Render.jpg) | Isometric render of the mechanism |
+| [Isometric](media/iso.mp4) · [Top](media/Top.mp4) · [Left](media/left.mp4) | Simulation recordings from three viewpoints |
 
 ### Physical prototype
 
