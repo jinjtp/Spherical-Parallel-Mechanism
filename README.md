@@ -2,12 +2,6 @@
 
 Term Project 2569 · 2103-322 Design of Mechanism
 
-## Getting started
-
-1. Start with **Symbolic Math** for the mechanism diagram, equations, and plots. Then see **Simscape Multibody** for the 3D simulation and **Physical prototype** for the built mechanism.
-2. To run the model, select **Code → Download ZIP** on GitHub and extract the files.
-3. In MATLAB R2026a, with Simulink, Simscape, and Simscape Multibody installed, set the **Current Folder** to `simulation/`. Open `SPM_allR.slx` and click **Run**. The model loads `spm_params.m` automatically.
-
 ## Project overview
 
 - **Project name** — Spherical Parallel Mechanism for Pan–Tilt Motion
