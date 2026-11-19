@@ -146,7 +146,3 @@ The time histories quantify the platform response when both inputs are active. T
 | Neutral Pose | J3 Sweep | J1 Sweep |
 | :---: | :---: | :---: |
 | ![Neutral Pose](media/Fusion360%20View1.png) | ![Tilt Motion](media/Fusion360%20View2.png) | ![Pan Motion](media/Fusion360%20View3.png) |
-
-- **Neutral Pose (Left):** Home configuration with the central end-effector ring aligned horizontally and all revolute joint axes intersecting at the remote center of motion (RCM).
-- **J3 Sweep / Tilt (Center):** Articulated tilt state showing platform inclination driven by the upper linkage chain without mechanical interference.
-- **J1 Sweep / Pan (Right):** 90-degree pan rotation driven by the lower input joint (J1), demonstrating decoupled yaw movement around the vertical axis.
