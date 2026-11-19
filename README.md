@@ -42,6 +42,26 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 The model uses CAD parts connected by five revolute joints (J1–J5). We applied sinusoidal angle inputs at J1 and J3. The other three joints move as the links guide the platform. In the simulation shown here, the input angles vary between ±40° at J1 and ±35° at J3. Both input signals have an angular frequency of 0.4 rad/s.
 
+### Joint Sweep Tests
+
+Both tests start at Position A, with J1 at 0° and J3 at +90°. One joint moves at a time while the other stays fixed.
+
+#### J1 Sweep — Top View
+
+![J1 sweep from the top view](media/j1_sweep_top.gif)
+
+The red link rotates back and forth about J1 while J3 is held at +90°.
+
+[Watch the J1 sweep (MP4)](media/j1_sweep_top.mp4)
+
+#### J3 Sweep — Left View
+
+![J3 sweep from the left view](media/j3_sweep_left.gif)
+
+The yellow link rotates back and forth about J3 while J1 is held at 0°.
+
+[Watch the J3 sweep (MP4)](media/j3_sweep_left.mp4)
+
 | File | Description |
 | --- | --- |
 | [Mechanism.avi](media/Mechanism.avi) | Demonstration video for submission |
