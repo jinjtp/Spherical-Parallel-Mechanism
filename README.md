@@ -11,7 +11,9 @@ Term Project 2569 · 2103-322 Design of Mechanism
 ## Project overview
 
 - **Project name** — Spherical Parallel Mechanism for Pan–Tilt Motion
-- **Problem / purpose** — Find how the input angles at J1 and J3 affect the pan and tilt of the platform.
+- **Problem / purpose**
+
+  Because the sun’s position changes throughout the day and across seasons, a solar panel fixed at one tilt angle receives sunlight at a certain angle, which reduces the energy it collects. A panel that can rotate about both a pan and a tilt axis can keep facing the sun and generate more energy. The purpose of this project is to model, simulate and build a prototype of a 2-DOF spherical parallel mechanism that orients a solar panel in pan and tilt, keeping both inputs on the fixed base. A symbolic kinematic model is used to predict the panel’s orientation from the two input angles and to check its range of motion and singular positions, providing a basis for a future sun-tracking system.
 - **Team**
   - Jinjuta Peecharsoontorn 6730069121, Symbolic Math
   - Name, Simscape Multibody
