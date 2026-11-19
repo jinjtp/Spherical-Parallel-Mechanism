@@ -141,13 +141,12 @@ The time histories quantify the platform response when both inputs are active. T
 
 ### Physical prototype
 
-3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360.
+3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the home configuration and single-joint motions corresponding to J1 (pan) and J3 (tilt):
 
-| Neutral Pose | Tilt Motion | Pan Motion (90° Rotation) |
+| Neutral Pose (Home) | J3 Sweep (Tilt Motion) | J1 Sweep (Pan Motion) |
 | :---: | :---: | :---: |
 | ![Neutral Pose](media/Fusion360%20View1.png) | ![Tilt Motion](media/Fusion360%20View2.png) | ![Pan Motion](media/Fusion360%20View3.png) |
 
-* **Neutral Pose (Left):** Home configuration with the central end-effector ring aligned horizontally and all spherical axes intersecting at the center[cite: 2].
-* **Tilt Motion (Center):** Articulated tilt state demonstrating high-angle pitching of the central ring via the curved linkage chains without link interference[cite: 3].
-* **Pan Motion (Right):** 90-degree pan rotation showing decoupled yaw movement around the vertical axis while maintaining smooth joint alignment[cite: 4].
-
+- **Neutral Pose (Left):** Home configuration (J1 = 0°, J3 = +90°) with the central end-effector ring aligned horizontally and all revolute joint axes intersecting at the remote center of motion (RCM).
+- **J3 Sweep / Tilt (Center):** Articulated tilt state showing platform inclination driven by the upper linkage chain without mechanical interference.
+- **J1 Sweep / Pan (Right):** 90-degree pan rotation driven by the lower input joint (J1), demonstrating decoupled yaw movement around the vertical axis.
