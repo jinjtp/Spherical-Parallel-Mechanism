@@ -146,3 +146,11 @@ The time histories quantify the platform response when both inputs are active. T
 | Neutral Pose | J3 Sweep | J1 Sweep |
 | :---: | :---: | :---: |
 | ![Neutral Pose](media/Fusion360%20View1.png) | ![Tilt Motion](media/Fusion360%20View2.png) | ![Pan Motion](media/Fusion360%20View3.png) |
+
+#### SLS 3D-Printed Prototype Testing (Formlabs Fuse / Nylon 12)
+
+Manual actuation tests were conducted by rotating the two base input axes to verify the motion of the central ring:
+
+| State 1 | State 2 | State 3 | State 4 | State 5 |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Hardware move 1](media/Hardware%20move1.jpg) | ![Hardware move 2](media/Hardware%20move2.jpg) | ![Hardware move 3](media/Hardware%20move3.jpg) | ![Hardware move 4](media/Hardware%20move4.jpg) | ![Hardware move 5](media/Hardware%20move5.jpg) |
