@@ -1,4 +1,4 @@
-# Spherical Parallel Mechanism
+# 2-DOF Spherical Parallel Mechanism
 
 Term Project 2569 · 2103-322 Design of Mechanism
 
@@ -14,7 +14,7 @@ Term Project 2569 · 2103-322 Design of Mechanism
 
 ## Project overview
 
-- **Project name** — Spherical Parallel Mechanism for Pan–Tilt Motion
+- **Project name** — 2-DOF Spherical Parallel Mechanism for Pan–Tilt Motion
 - **Problem / purpose**
 
   Because the sun’s position changes throughout the day and across seasons, a solar panel fixed at one tilt angle receives sunlight at a certain angle, which reduces the energy it collects. A panel that can rotate about both a pan and a tilt axis can keep facing the sun and generate more energy. The purpose of this project is to model, simulate and build a prototype of a 2-DOF spherical parallel mechanism that orients a solar panel in pan and tilt, keeping both inputs on the fixed base. A symbolic kinematic model is used to predict the panel’s orientation from the two input angles and to check its range of motion and singular positions, providing a basis for a future sun-tracking system.
@@ -141,12 +141,12 @@ The time histories quantify the platform response when both inputs are active. T
 
 ### Physical prototype
 
-3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the home configuration and single-joint motions corresponding to J1 (pan) and J3 (tilt):
+3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the home configuration and single-joint motions corresponding to J1 and J3:
 
-| Neutral Pose (Home) | J3 Sweep (Tilt Motion) | J1 Sweep (Pan Motion) |
+| Neutral Pose | J3 Sweep | J1 Sweep |
 | :---: | :---: | :---: |
 | ![Neutral Pose](media/Fusion360%20View1.png) | ![Tilt Motion](media/Fusion360%20View2.png) | ![Pan Motion](media/Fusion360%20View3.png) |
 
-- **Neutral Pose (Left):** Home configuration (J1 = 0°, J3 = +90°) with the central end-effector ring aligned horizontally and all revolute joint axes intersecting at the remote center of motion (RCM).
+- **Neutral Pose (Left):** Home configuration with the central end-effector ring aligned horizontally and all revolute joint axes intersecting at the remote center of motion (RCM).
 - **J3 Sweep / Tilt (Center):** Articulated tilt state showing platform inclination driven by the upper linkage chain without mechanical interference.
 - **J1 Sweep / Pan (Right):** 90-degree pan rotation driven by the lower input joint (J1), demonstrating decoupled yaw movement around the vertical axis.
