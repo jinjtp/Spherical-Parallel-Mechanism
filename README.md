@@ -25,13 +25,13 @@ Term Project 2569 · 2103-322 Design of Mechanism
 - **Status** — Finish
 - **Last updated** — 2026-11-19
 
-### Motivation
+## Motivation
 
 For this project, we had to choose a mechanism and explain how its input motion produces its output motion. We chose a pan–tilt mechanism and used a solar panel as an example. During the day, the sun changes both its direction along the horizon and its height above it. To keep a panel facing the sun, we need to turn it side to side (pan) and angle it up or down (tilt).
 
 What we wanted to find out was how much the platform pans and tilts when we turn the two input joints, J1 and J3. We used kinematic equations to relate the input angles to the platform angles, then built a Simscape Multibody model to see how the links move together.
 
-### Symbolic Math
+## Symbolic Math
 
 #### Symbolic Math overview
 The panel is held by two kinematic chains (legs) that both start on the fixed base. Two input angles are applied at the base:
@@ -92,7 +92,7 @@ The inputs are
 
 <!-- Add images or videos from the symbolic simulation and a link to the MATLAB Live Script here. -->
 
-### Simscape Multibody
+## Simscape Multibody
 
 For the proposed solar-tracking application, the platform must be able to change its orientation in both pan and tilt. The Simscape Multibody model was used to relate these platform angles to the rotation of the two actuated joints at the base.
 
@@ -139,7 +139,7 @@ The time histories quantify the platform response when both inputs are active. T
 | [Render.jpg](media/Render.jpg) | Isometric render of the mechanism |
 | [Isometric](media/iso.mp4) · [Top](media/Top.mp4) · [Left](media/left.mp4) | Simulation recordings from three viewpoints |
 
-### Physical prototype
+## Physical prototype
 
 3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the home configuration and single-joint motions corresponding to J1 and J3:
 
