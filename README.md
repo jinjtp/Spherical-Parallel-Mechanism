@@ -67,7 +67,7 @@ The pan amplitude was approximately 0.70 rad, close to the commanded J1 amplitud
 
 The time histories quantify the platform response when both inputs are active. The sweeps below show the motion of the links and platform when each input is applied separately. Both tests started from Position A, with J1 at 0° and J3 at +90°. In each test, one joint was swept while the other was held at its starting angle.
 
-| J1 Sweep — Top View | J3 Sweep — Isometric View |
+| J1 Sweep - Top View | J3 Sweep - Isometric View |
 | :---: | :---: |
 | ![Top view of the J1 sweep with J3 held at 90 degrees](media/j1_sweep_top.gif) | ![Isometric view of the J3 sweep with J1 held at zero degrees](media/j3_sweep_iso.gif) |
 | With J3 fixed at +90°, the top view shows the platform turning relative to the base. | With J1 fixed at 0°, the isometric view shows the change in platform inclination. |
