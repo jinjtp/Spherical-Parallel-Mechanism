@@ -12,7 +12,10 @@ Term Project 2569 · 2103-322 Design of Mechanism
 
 - **Project name** — Spherical Parallel Mechanism for Pan–Tilt Motion
 - **Problem / purpose** — Find how the input angles at J1 and J3 affect the pan and tilt of the platform.
-- **Team** — [Name, Symbolic Math] · [Name, Simscape Multibody] · [Name, Physical Prototype]
+- **Team**
+  - Jinjuta Peecharsoontorn 6730069121, Symbolic Math
+  - Name, Simscape Multibody
+  - Name, Physical Prototype
 - **Status** — Simscape model and demonstration videos uploaded
 - **Last updated** — 2026-11-19
 
@@ -85,21 +88,7 @@ After running the model, open **Scope pan** to see the platform pan angle over t
 | Path | Purpose |
 | --- | --- |
 | `hardware/mechanical/` | CAD models, drawings, and fabrication files |
-| `hardware/electronics/` | Schematics, PCB files, and wiring diagrams |
-| `hardware/bom.csv` | Bill of materials with quantities, units, and sourcing details |
-| `software/firmware/` | Microcontroller code and board setup |
-| `software/application/` | PC or Raspberry Pi application code |
-| `machine-skills/` | Machine commands, procedures, and skill instructions |
 | `simulation/` | Models, scripts, assumptions, and simulation results |
 | `docs/` | Assembly, setup, operation, and maintenance instructions |
 | `media/` | Images, GIFs, and links to demonstration videos |
-| `experiments/` | Procedures, raw data, and results |
 | `publications/` | Project-related journal and conference papers |
-
-## Collaboration and file practices
-
-Use descriptive filenames and commit messages. Record units, revisions, software versions, and assumptions. Keep editable source files where practical. Avoid committing credentials, private data, temporary files, or duplicate exports. Consider Git LFS for large CAD, simulation, and video files.
-
-## Safety and validation
-
-Document hazards, safeguards, and operating limits before testing hardware. Validate important calculations and simulation results against measurements where practical.
