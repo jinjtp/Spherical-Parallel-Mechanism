@@ -43,6 +43,20 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ### Simscape Multibody
 
+#### Simscape Model
+
+The model takes joint-angle inputs at J1 and J3 and measures the platform's pan and tilt angles.
+
+![Simscape Multibody block diagram showing the J1 and J3 inputs and the platform pan and tilt outputs](media/simscape_model.png)
+
+#### Pan and Tilt Results
+
+| Platform Pan | Platform Tilt and J3 Angle |
+| :---: | :---: |
+| ![Platform pan angle versus time in radians](media/scope_pan.png) | ![Platform tilt and measured J3 angle versus time in radians](media/scope_tilt_theta2.png) |
+
+The horizontal axis shows time in seconds, and the vertical axis shows angle in radians. In the right plot, the yellow trace is platform tilt and the blue trace is the measured J3 angle (θ₂).
+
 ![Isometric view of the pan–tilt mechanism in motion](media/iso.gif)
 
 The model uses CAD parts connected by five revolute joints (J1–J5). We applied sinusoidal angle inputs at J1 and J3. The other three joints move as the links guide the platform. In the simulation shown here, the input angles vary between ±40° at J1 and ±35° at J3. Both input signals have an angular frequency of 0.4 rad/s.
