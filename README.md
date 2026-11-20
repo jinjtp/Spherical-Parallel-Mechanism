@@ -260,7 +260,7 @@ The platform pan amplitude was approximately 0.70 rad, close to the commanded am
 
 The combined-input simulation quantifies the platform response when both inputs are active. The sweeps below show how the linkage and platform move when each input is varied separately. Both tests started with joint **e** at 0° and joint **a** at +90°. In each test, one joint was swept while the other was held at its starting angle.
 
-| Joint e Sweep — Top View | Joint a Sweep — Isometric View |
+| Joint e Sweep - Top View | Joint a Sweep - Isometric View |
 | :---: | :---: |
 | ![Top view of the joint e sweep](media/jointesweep.gif) | ![Isometric view of the joint a sweep](media/jointasweep.gif) |
 | Joint **a** was held at +90°. The top view shows the platform turning relative to the base. | Joint **e** was held at 0°. The isometric view shows the change in platform inclination. |
