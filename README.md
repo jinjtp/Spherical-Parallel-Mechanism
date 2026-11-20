@@ -238,11 +238,11 @@ A dash indicates that the source data did not establish an angle for that pose.
 
 ## Physical prototype
 
-3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the neutral home configuration, single-axis actuation at joint `a`, and bidirectional base rotation sweeps at joint `e` ($\pm 34^\circ$):
+3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the neutral home configuration, single-axis actuation at joint `a`, and bidirectional base rotation sweeps at joint `e`:
 
 | Neutral Pose | Joint `a` Sweep | Joint `e` Sweep ($+34^\circ$) | Joint `e` Sweep ($-34^\circ$) |
 | :---: | :---: | :---: | :---: |
-| ![Neutral Pose](media/CAD%20View1.png) | ![Joint a Sweep](media/CAD%20View2.png) | ![Joint e Sweep +34 deg](media/CAD%20View3.jpg) | ![Joint e Sweep -34 deg](media/CAD%20View4.jpg) |
+| ![Neutral Pose](media/CAD%20View1.png) | ![Joint a Sweep](media/CAD%20View2.png) | ![Joint e Sweep +34 deg](media/CAD%20View3.png) | ![Joint e Sweep -34 deg](media/CAD%20View4.png) |
 
 #### SLS 3D-Printed Prototype Testing (Formlabs Fuse / Nylon 12)
 
