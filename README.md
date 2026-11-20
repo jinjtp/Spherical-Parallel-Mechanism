@@ -31,7 +31,7 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ## Kinematic Diagram and DOF Analysis
 
-### 1. Kinematic Schematic & Spherical Architecture
+### Kinematic Schematic & Spherical Architecture
 
 <p align="center">
   <img src="media/Kinematic%20Diagram.jpg" width="65%" alt="Kinematic Diagram" />
@@ -44,7 +44,7 @@ What we wanted to find out was how much the platform pans and tilts when we turn
   - **Upper `RRR` Limb (`a` $\rightarrow$ `b` $\rightarrow$ `c`):** The second active input at coaxial base joint `a` ($\theta_2$) pivots the upper yellow arch (`Link 4`) about the horizontal $X$-axis, transmitting rotational motion through the intermediate green coupler (`Link 3`) via passive joints `b` and `c`.
 - **Orthogonal Span Geometry:** Adjacent revolute joint axes on each link are arranged at orthogonal ($90^\circ$) angular spans, maintaining constant spherical pivot radii and decoupled pan-tilt actuation across the operating range.
 
-### 2. Degree-of-Freedom (DOF) & Over-Constrained Paradox
+### Degree-of-Freedom (DOF) & Over-Constrained Paradox
 
 - **General 3D Spatial Mobility (Negative Result):** In 3D Euclidean space ($d = 6$), applying the standard **Chebyshev–Grübler–Kutzbach criterion** to this 5-link, 5-revolute-joint ($f_i = 1$) closed loop yields a negative mobility value, mathematically predicting a statically indeterminate, locked structure:
 
@@ -58,7 +58,7 @@ $$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = \mathbf{2}$$
 
 - **Physical Mobility in Hardware (Clearances & Compliance):** Theoretically, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to prevent mechanical binding. In the physical SLS 3D-printed prototype (Nylon 12), small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic structural compliance** of the curved polymer links (`Link 2`–`Link 4`) naturally absorb minor geometric tolerances, enabling smooth, lock-free 2-DOF motion.
 
-### 3. Orientation Workspace & Singularity Analysis
+### Orientation Workspace & Singularity Analysis
 
 - **Spherical Orientation Envelope:** With zero translational displacement ($\Delta x = \Delta y = \Delta z = 0$), the end-effector sweeps a bounded spherical orientation cone under the simulated sinusoidal trajectories $\theta_1(t) = 40^\circ \sin(0.4t)$ at joint `e` and $\theta_2(t) = -35^\circ \sin(0.4t)$ at joint `a` over one full period ($T = 15.708\text{ s}$):
 
