@@ -263,7 +263,7 @@ The combined-input simulation quantifies the platform response when both inputs 
 | :---: | :---: |
 | ![Top view of the joint e sweep](media/jointesweep.gif) | ![Isometric view of the joint a sweep](media/jointasweep.gif) |
 | Joint **a** was held at +90°. The top view shows the platform turning relative to the base. | Joint **e** was held at 0°. The isometric view shows the change in platform inclination. |
-| [MP4](media/jointesweep.mp4) · [AVI](media/jointesweep.avi) | [MP4](media/jointasweep.mp4) |
+| [MP4](media/jointesweep.mp4) | [MP4](media/jointasweep.mp4) |
 
 #### Reproducing the Combined-Input Simulation
 
