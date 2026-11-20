@@ -56,12 +56,12 @@ Despite the negative mobility prediction, both the Simscape Multibody simulation
    In theoretical kinematics, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to avoid binding. In the physical SLS Nylon 12 prototype, small **radial/axial bearing clearances** at joints `a`–`e` combined with the **elastic compliance** of the curved polymer links (`Link 2`, `Link 3`, `Link 4`) naturally absorb minor geometric misalignments. Consequently, the hardware rotates freely across its workspace without mechanical locking, matching the 2-DOF analytical model.
 
 ## Symbolic Math
-#### Requirements
+**Requirements**
 - MATLAB (developed in R2026a; R2016b or newer should work)
 - Symbolic Math Toolbox
   
-#### How to run
-1. Open [Symbolic_Math_v6_1.mlx](docs/Symbolic_Math_v6_1.mlx) in MATLAB.
+**How to run**
+1. Open [Symbolic_Math_v6_2.mlX](simulation/Symbolic%20Mathematics/Symbolic_Math_v6_2.mlx) in MATLAB. 
 2. Adjust the settings in section 0 if needed.
 3. Click Run All.
 
@@ -79,26 +79,28 @@ The live script is organised in sections:
 | 7 | Animation |
 
 Comments were provided inside the script for better understanding of its function.
-#### Symbolic Math overview
-The panel is held by two kinematic chains (legs) that both start on the fixed base. Two input angles are applied at the base:
+
+**Symbolic Math overview**
+
+The panel is held by two kinematic chains that both start on the fixed base. Two input angles are applied at the base:
 - θ1 at joint J1, which pans the panel
 - θ2 at joint J3, which tilts the panel through the second leg
-- The two legs are:
-  - Leg A: Base → J1 → Link2 (half ring) → J2 → Platform
-  - Leg B: Base → J3 → Link4+5 (upper arm) → J4 → Link3 (fork) → J5 → Platform
+- The two chains are:
+  - Chain e–d: Link 1(ground) → e → Link 2 (red) → d → Link 5 (panel, grey)
+  - Chain a–b–c: Link 1 → a → Link 4 (yellow) → b → Link 3 (green) → c → Link 5 (panel, grey)
 
-#### Kinematic analysis
-##### Mechanism
+### Kinematic analysis
+**Mechanism**
 
-All joints are revolute, and every joint axis passes through the centre point O = (0, 0, 0), which makes this a spherical mechanism.
+All joints are revolute, and every joint axis passes through the centre point O = (0, 0, 0), which makes this a spherical mechanism. The Y axis points up
 
 | Joint | Connects | Axis | Point on axis (mm) | Role |
 | --- | --- | --- | --- | --- |
-| J1 | Base – Link2 | Y | (0, −45, 0) | active, θ1 (pan) |
-| J2 | 	Link2 – Platform | X | (30, 0, 0) | passive (= tilt)) |
-| J3 | 	Base – Link4+5 | X | (−49, 0, 0) | active, θ2 |
-| J4 | 	Link4+5 – Link3 | Z | (0, 0, −30) | passive |
-| J5 | 	Link3 – Platform | Y | (0, 25, 0) | 	passive |
+| a | Link 1 – Link 4 | X | (−49, 0, 0) | active, θ2 |
+| b | Link 4 – Link 3 | Z |	(0, 0, −30) | passive |
+| c | Link 3 – Link 5 | Y |	(0, 25, 0)| passive |
+| d | Link 5 – Link 2 | X |	(30, 0, 0) | passive (= tilt) |
+| e | Link 1 – Link 2 | Y |	(0, −45, 0) | active, θ1 (pan) |
 
 The inputs are
 
@@ -110,46 +112,48 @@ The inputs are
 | --- | --- | --- |
 | A1, A2 | Input amplitudes, entered in degrees and converted to rad | 40°, −35° |
 | w1, w2 | Input frequencies (rad/s) | 0.4, 0.4 |
-| t | Simulation time, one full period | 15.708 |
+| t | Simulation time, one full period | 15.708 s |
 
-##### Degrees of freedom
+**Degrees of freedom**
 
 
 $$DOF = 3(n - 1) - 2j_1 - j_2$$
 
-n = 5 links (base, Link2, Link4+5, Link3, platform)
-j1 = 5 full joints (J1–J5, all revolute)
-j2 = 0 half joints
+- n = 5 links (base, Link2, Link4+5, Link3, platform)
+- j1 = 5 full joints (J1–J5, all revolute)
+- j2 = 0 half joints
 
 
 $$DOF=3(5-1)-2(5)-0=2$$
 
 This confirms θ1 and θ2 are the inputs.
-##### Symbolic Kinemnatics
-The angles of the passive joints J2, J4 and J5 are named `jj2`, `jj4` and `jj5` in the code (written jj2,jj4,jj5). Each leg gives the platform orientation as a product of rotations:
 
+### Symbolic Kinemnatics
+The angles of the passive joints b, c and d are named `qb`, `qc` and `qd` in the code. Each leg gives the platform orientation as a product of rotations:
 
-$$RA=Ry(1)Rx(jj2),RB=Rx(2)Rz(jj4)Ry(jj5)$$
+$$R_1 = R_y(\theta_1)\,R_x(q_d), \qquad R_2 = R_x(\theta_2)\,R_z(q_b)\,R_y(q_c)$$
 
-Loop closure. Link3 keeps the J4 axis perpendicular to the J5 axis:
+Loop closure. Link 3 keeps the axis of joint b perpendicular to the axis of joint c:
 
-$$\mathbf{u}_4 \cdot \mathbf{u}_5 = 0, \qquad \mathbf{u}_4 = R_x(\theta_2)\,\hat{z}, \quad \mathbf{u}_5 = R_A\,\hat{y}$$
+$$\mathbf{u}_b \cdot \mathbf{u}_c = 0, \qquad \mathbf{u}_b = R_x(\theta_2)\,\hat{z}, \quad \mathbf{u}_c = R_1\,\hat{y}$$
 
 which gives
 
-$$\cos\theta_1 \cos\theta_2 \sin jj_2 - \sin\theta_2 \cos jj_2 = 0$$
+$$\cos\theta_1 \cos\theta_2 \sin q_d - \sin\theta_2 \cos q_d = 0 \quad\Rightarrow\quad \tan q_d = \frac{\tan\theta_2}{\cos\theta_1}$$
 
-Pan and tilt (assembly branch with cos jj2 > 0):
+Pan and tilt (assembly branch with cos q_d > 0):
 
-$$\text{pan} = \theta_1, \text{tilt} = jj_2 = {arctan2}(\sin\theta_2,\ \cos\theta_1\cos\theta_2)$$
+$$\text{pan} = \theta_1, \text{tilt} = q_d = {arctan2}(\sin\theta_2,\ \cos\theta_1\cos\theta_2)$$
 
-These follow from the platform rotation matrix: pan = arctan2(R13, R33) and tilt = arctan2(−R23, R22).
+These follow from the platform rotation matrix R: pan = atan2(R13, R33) and tilt = atan2(−R23, R22).
 
-Passive joints of leg B, from Rx(2)TRA=Rz(jj4)Ry(jj5)=M
+Passive joints of chain a–b–c, from
 
-$$jj_4 = \{arctan2}(-M_{12},\, M_{22}), \qquad jj_5 = {arctan2}(-M_{31},\, M_{33})$$
+$$M = R_x(\theta_2)^T R_1 = R_z(q_b)\,R_y(q_c)$$
 
-##### Velocity, acceleration and singularity
+$$q_b = {atan2}(-M_{12},\ M_{22}), \qquad q_c = {atan2}(-M_{31},\ M_{33})$$
+
+**Velocity, acceleration and singularity**
 Velocities and accelerations are found by differentiating pan(t) and tilt(t) symbolically with `diff`.The Jacobian relates input rates to output rates:
 
 ```math
@@ -160,10 +164,11 @@ J = \begin{bmatrix} 1 & 0 \\ \dfrac{\partial\,\text{tilt}}{\partial\theta_1} & \
 $$\det J = \frac{\cos\theta_1}{\cos^2\theta_1\cos^2\theta_2 + \sin^2\theta_2}$$
 
 - det J = 1: tilt changes one-to-one with θ2 (this is the case at θ1 = 0).
-- det J → 0 at |θ1| = π/2: a singularity. There θ2 no longer changes the tilt, so the panel can't be controlled in that direction. From the symbolic math, det J is never close to zero. The motion never comes close to the singularity. 
+- det J → 0 at |θ1| = π/2: a singularity. There θ2 no longer changes the tilt, so the panel can't be controlled in that direction.
+  - With A1 = 40°, θ1 never gets near π/2. Over the whole motion det J stays between 1.000 and 1.0858, so the mechanism stays well away from the singularity.
   
-#### Results 
-##### Summary Table
+### Results 
+**Summary Table**
 
 | Parameter | Value |
 | --- | --- |
@@ -176,15 +181,15 @@ $$\det J = \frac{\cos\theta_1}{\cos^2\theta_1\cos^2\theta_2 + \sin^2\theta_2}$$
 | J2 range (= tilt) | ±0.7405 rad |
 | J4 range | 0 to 0.4486 rad |
 | J5 range | ±0.5545 rad |
-| det J range | 1.000 to 1.086 | 
+| det J range | 1.000 to 1.0858 | 
 
-##### Figures
+**Figures**
 | Figure | Descrption |
 | --- | --- |
 | Input angle | θ1 and θ2 vs time |
 | Pan & Tilt | Pan vs time; tilt vs time with θ2 for comparison |
 | Velocity & Acceleration | Pan and tilt rates and accelerations |
-| Passive joints | Angles of J2 (= tilt), J4 and J5 vs time |
+| Passive joints |	Angles of d (= tilt), b and c vs time |
 | Pan-tilt path | Tilt vs pan: the directions the panel points during the motion |
 
 ![Input angle](media/Input_angle.png)
@@ -202,11 +207,11 @@ $$\det J = \frac{\cos\theta_1}{\cos^2\theta_1\cos^2\theta_2 + \sin^2\theta_2}$$
 
 ![Pan-tilt path](media/panel_path.png)
 
-##### Symbolic simulation
+**Symbolic simulation**
 
-![symbolic math simulation](media/symbolic_math_ani.gif)
+![symbolic math simulation](media/Symbolic_Math_ani.gif)
 
-##### Limitations
+**Limitations**
 - The animation uses simplified shapes (arcs, rings and pins) sized from the CAD parts, not the CAD geometry itself.
 - Kinematics only: masses, gravity and joint torques are not modelled.
 
