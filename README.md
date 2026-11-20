@@ -37,12 +37,13 @@ What we wanted to find out was how much the platform pans and tilts when we turn
   <img src="media/Kinematic%20Diagram.jpg" width="65%" alt="Kinematic Diagram" />
 </p>
 
-- **System Topology:** A closed-loop 2-DOF **Spherical Parallel Manipulator (SPM)** comprising **$L = 5$ rigid links** (`Link 1`–`Link 5`) connected by **$J = 5$ single-DOF revolute joints** (`a`, `b`, `c`, `d`, `e`, with zero higher-pair joints $J_2 = 0$).
-- **Common Center of Rotation:** As shown by the light blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **center of rotation**. This geometric condition constrains every moving link to concentric spherical surfaces, ensuring the central platform (`Link 5`) exhibits pure 2-DOF spherical orientation.
+- **System Topology:**
+  A closed-loop 2-DOF **Spherical Parallel Manipulator (SPM)** comprising **$L = 5$ rigid links** (`Link 1`–`Link 5`) connected by **$J = 5$ single-DOF revolute joints** (`a`, `b`, `c`, `d`, `e`, with zero higher-pair joints $J_2 = 0$).
+- **Common Center of Rotation:**
+  As shown by the light blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **center of rotation**. This geometric condition constrains every moving link to concentric spherical surfaces, ensuring the central platform (`Link 5`) exhibits pure 2-DOF spherical orientation.
 - **Parallel Kinematic Chains (`RR` and `RRR` Limbs):**
   - **Lower `RR` Limb (`e` $\rightarrow$ `d`):** The first active input at base joint `e` ($\theta_1$) rotates the lower red curved yoke (`Link 2`) about the vertical $Y$-axis, directly guiding the central ring (`Link 5`) via passive joint `d`.
   - **Upper `RRR` Limb (`a` $\rightarrow$ `b` $\rightarrow$ `c`):** The second active input at coaxial base joint `a` ($\theta_2$) pivots the upper yellow arch (`Link 4`) about the horizontal $X$-axis, transmitting rotational motion through the intermediate green coupler (`Link 3`) via passive joints `b` and `c`.
-- **Orthogonal Span Geometry:** Adjacent revolute joint axes on each link are arranged at orthogonal ($90^\circ$) angular spans, maintaining constant spherical pivot radii and decoupled pan-tilt actuation across the operating range.
 
 ### Degree-of-Freedom (DOF) & Over-Constrained Paradox
 
@@ -56,7 +57,7 @@ $$\text{DOF}_{\text{modified}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) + c = -1 + 
 
 $$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = \mathbf{2}$$
 
-- **Physical Mobility in Hardware (Clearances & Compliance):** Theoretically, an over-constrained linkage requires exact manufacturing alignment of all joint axes to prevent mechanical binding. In the physical SLS 3D-printed prototype (Nylon 12), small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic structural compliance** of the curved polymer links (`Link 2`–`Link 4`) naturally absorb minor geometric tolerances, enabling smooth, lock-free 2-DOF motion.
+- **Physical Mobility in Hardware (Clearances & Compliance):** Theoretically, an over-constrained linkage requires exact manufacturing alignment of all joint axes to prevent mechanical binding. In the physical SLS 3D-printed prototype (Nylon 12), small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic structural compliance** of the curved polymer links naturally absorb minor geometric tolerances, enabling smooth, lock-free 2-DOF motion.
 
 ### Workspace Analysis
 
@@ -141,7 +142,7 @@ $$DOF=3(5-1)-2(5)-0=2$$
 
 This confirms θ1 and θ2 are the inputs.
 
-### Symbolic Kinemnatics
+### Symbolic Kinematics
 The angles of the passive joints b, c and d are named `qb`, `qc` and `qd` in the code. Each leg gives the platform orientation as a product of rotations:
 
 $$R_1 = R_y(\theta_1)\,R_x(q_d), \qquad R_2 = R_x(\theta_2)\,R_z(q_b)\,R_y(q_c)$$
@@ -234,13 +235,13 @@ For the proposed solar-tracking application, the platform must be able to change
 
 ![Isometric animation of the spherical parallel mechanism with both joints driven](media/iso.gif)
 
-#### Model Configuration
+### Model Configuration
 
 The fixed base and moving platform are connected by two chains of rigid bodies that form a closed-loop mechanism with five revolute joints. Angular motion is prescribed at joint **e** (θ₁, previously J1) and joint **a** (θ₂, previously J3). The passive joints **b**, **c**, and **d** move according to the linkage constraints. The platform orientation is measured relative to the fixed base and expressed as pan and tilt.
 
 ![Simscape Multibody block diagram showing the joint-angle inputs and platform-angle outputs](media/simscapemodel.png)
 
-#### Platform Response Under Combined Inputs
+### Platform Response Under Combined Inputs
 
 Joints **e** and **a** were driven simultaneously with sinusoidal angle commands. The amplitudes were 0.698 rad (40°) at joint **e** and 0.611 rad (35°) at joint **a**. Both commands had an angular frequency of 0.4 rad/s, corresponding to a period of approximately 15.7 s. The plots show one cycle, with time in seconds and angles in radians.
 
@@ -250,7 +251,7 @@ Joints **e** and **a** were driven simultaneously with sinusoidal angle commands
 
 The platform pan amplitude was approximately 0.70 rad, close to the commanded amplitude at joint **e**. In the right plot, the platform tilt (yellow) reached an amplitude of approximately 0.74 rad, compared with 0.61 rad for the measured angle at joint **a** (blue, θ₂). The difference in amplitude was approximately 0.13 rad for this test.
 
-#### Single-Joint Sweep Tests
+### Single-Joint Sweep Tests
 
 The combined-input simulation quantifies the platform response when both inputs are active. The sweeps below show how the linkage and platform move when each input is varied separately. Both tests started with joint **e** at 0° and joint **a** at +90°. In each test, one joint was swept while the other was held at its starting angle.
 
@@ -282,23 +283,19 @@ The combined-input simulation quantifies the platform response when both inputs 
 | :---: | :---: | :---: | :---: |
 | ![Neutral Pose](media/CAD%20View1.png) | ![Joint a Sweep](media/CAD%20View2.png) | ![Joint e Sweep +34 deg](media/CAD%20View3.png) | ![Joint e Sweep -34 deg](media/CAD%20View4.png) |
 
-#### SLS 3D-Printed Prototype Testing (Formlabs Fuse / Nylon 12)
+### SLS 3D-Printed Prototype Testing (Formlabs Fuse / Nylon 12)
 
 Manual actuation tests were conducted by rotating the two base input axes to verify the motion of the central ring:
 
-| State 1 | State 2 | State 3 |
-| :---: | :---: | :---: |
-| ![Hardware move 1](media/Hardware%20move1.jpg) | ![Hardware move 2](media/Hardware%20move2.jpg) | ![Hardware move 3](media/Hardware%20move3.jpg) |
+| State 1 | State 2 | State 3 | State 4 | State 5 |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Hardware move 1](media/Hardware%20move1.jpg) | ![Hardware move 2](media/Hardware%20move2.jpg) | ![Hardware move 3](media/Hardware%20move3.jpg) | ![Hardware move 4](media/Hardware%20move4.jpg) | ![Hardware move 5](media/Hardware%20move5.jpg) |
 
-| State 4 | State 5 |
-| :---: | :---: |
-| ![Hardware move 4](media/Hardware%20move4.jpg) | ![Hardware move 5](media/Hardware%20move5.jpg) |
-
-#### Physical Prototype Demonstration Video
+### Physical Prototype Demonstration Video
 
 The SLS 3D-printed prototype was manually actuated to demonstrate the conversion of two independent base rotations (J1 and J3) into pure 2-DOF spherical orientation of the central platform.
 
-The demonstration animation illustrates the smooth, coordinated motion of the assembled mechanism, confirming that all five revolute joint axes remain aligned with the central Remote Center of Motion (RCM) without link interference or binding across the tested workspace.
+The demonstration animation illustrates the smooth, coordinated motion of the assembled mechanism, confirming that all five revolute joint axes remain aligned with the center of rotation without link interference or binding across the tested workspace.
 
 Despite these physical tolerances, the prototype successfully validates the kinematic behavior and smooth spherical mobility of the 2-DOF Spherical Parallel Mechanism within its functional operating range.
 
