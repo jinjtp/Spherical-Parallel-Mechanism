@@ -216,20 +216,14 @@ The time histories quantify the platform response when both inputs are active. T
 
 #### Key Poses in the Animations
 
-| Motion | Pose | Video Time (s) | J1 (°) | J3 (°) | Pan (°) | Tilt (°) | Event |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| J1 sweep | A | 0.00, ≈7.87 | 0 | +90 | — | — | Start and return through Position A |
-| J1 sweep | B | ≈3.93 | — | +90 | — | — | First J1 reversal |
-| J1 sweep | C | ≈11.80 | — | +90 | — | — | Second J1 reversal |
-| J1 wide sweep | A | 0.00, ≈7.87 | 0 | +90 | — | — | Start and return through Position A |
-| J1 wide sweep | B | ≈3.93 | — | +90 | — | — | First J1 reversal |
-| J1 wide sweep | C | ≈11.80 | — | +90 | — | — | Second J1 reversal |
-| J3 sweep | A | 0.00, ≈12.60 | 0 | +90 | — | — | Start and return through Position A |
-| J3 sweep | B | ≈6.30 | 0 | +252 | — | — | J3 reversal at the maximum commanded angle |
-| J3 sweep | C | 15.70 | 0 | ≈−24 | — | — | Final frame with J3 still moving |
-| Both inputs active | Home | 0.00, ≈7.87 | — | — | — | — | Start and passage near the home pose |
-| Both inputs active | P1 | ≈3.93 | — | ≈−35 | ≈+40 | ≈−42 | First turn |
-| Both inputs active | P2 | ≈11.80 | — | ≈+35 | ≈−40 | ≈+42 | Second turn |
+| Test | Pose | Video Time (s) | Key Angles |
+| --- | --- | ---: | --- |
+| Both inputs active | P1 — First peak | ≈3.9 | Pan ≈ +40°, tilt ≈ −42° |
+| Both inputs active | P2 — Second peak | ≈11.8 | Pan ≈ −40°, tilt ≈ +42° |
+| Single-joint sweeps | A — Start | 0.0 | J1 = 0°, J3 = +90° |
+| J1 sweep and J1 wide sweep | B and C — Reversals | ≈3.9 and ≈11.8 | J3 held at +90° |
+| J3 sweep | B — Reversal | ≈6.3 | J1 = 0°, commanded J3 = +252° |
+| J3 sweep | C — Final frame | 15.7 | J1 = 0°, commanded J3 ≈ −24° |
 
 The J3 angles at B and C in the J3 sweep are from the input command.
 Angles at P1 and P2 are approximate readings from the Simulink Scope plots.
