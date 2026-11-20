@@ -67,10 +67,6 @@ The central platform (`Link 5`) performs pure 2-DOF spherical orientation about 
 | **Input angle range at joint `e` ($\theta_1$ / Pan)** | $-40.00^\circ \text{ to } +40.00^\circ$ ($\pm 0.6981\text{ rad}$) |
 | **Input angle range at joint `a` ($\theta_2$)** | $-35.00^\circ \text{ to } +35.00^\circ$ ($\pm 0.6109\text{ rad}$) |
 | **Output tilt range at joint `d` (Tilt)** | $-42.43^\circ \text{ to } +42.43^\circ$ ($\pm 0.7405\text{ rad}$) |
-| **Passive joint `b` range** | $0^\circ \text{ to } 25.70^\circ$ ($0 \text{ to } 0.4486\text{ rad}$) |
-| **Passive joint `c` range** | $-31.77^\circ \text{ to } +31.77^\circ$ ($\pm 0.5545\text{ rad}$) |
-| **Total pan sweep** | **$80.00^\circ$** ($1.3963\text{ rad}$) |
-| **Total tilt sweep** | **$84.85^\circ$** ($1.4810\text{ rad}$) |
 
 The results confirm that the central platform (`Link 5`) achieves a continuous 2-DOF spherical orientation workspace with a total evaluated pan sweep of **$80.00^\circ$** and tilt sweep of **$84.85^\circ$** without mechanical interference[cite: 12, 13].
 
