@@ -5,7 +5,7 @@ Term Project 2569 · 2103-322 Design of Mechanism
 | Path | Purpose |
 | --- | --- |
 | `hardware` | CAD models |
-| `simulation/Simscape Multibody` | Simscape Mulyibody files |
+| `simulation/Simscape Multibody` | Simscape Multibody files |
 | `simulation/Symbolic Mathematics` | Symbolic Math scripts |
 | `media/` | Images, GIFs, and links to demonstration videos |
 | `publications/` | Project-related journal and conference papers |
