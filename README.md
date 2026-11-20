@@ -272,3 +272,8 @@ Manual actuation tests were conducted by rotating the two base input axes to ver
 | State 4 | State 5 |
 | :---: | :---: |
 | ![Hardware move 4](media/Hardware%20move4.jpg) | ![Hardware move 5](media/Hardware%20move5.jpg) |
+
+#### Physical Prototype Demonstration Video
+
+- **Full Motion Demonstration:** [Watch Hardware Video (`hardware/Hardware Video.mov`)](hardware/Hardware%20Video.mov)
+- **Experimental Observations:** The demonstration video illustrates continuous manual actuation of the SLS Nylon 12 prototype across both base input axes (`J1` and `J3`). Rotating the bottom input axis drives the lower curved yoke (`Link 2`), while rotating the side input axis actuates the upper linkage chain (`Link 4+5` and `Link 3`). All five revolute joints rotate smoothly with minimal friction, confirming that the central platform maintains pure spherical orientation around the common Remote Center of Motion (RCM) without mechanical interference or binding.
