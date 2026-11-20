@@ -43,18 +43,14 @@ According to general spatial mobility theory, a calculated result of $\text{DOF}
 ##### 2. Resolving the Kinematic Paradox (Why the Physical Hardware Moves)
 Despite the negative mobility prediction, both the Simscape Multibody simulation and the SLS 3D-printed hardware prototype exhibit smooth, controllable **2-DOF motion**. This discrepancy is a classic **kinematic paradox** characteristic of **over-constrained spherical mechanisms**, explained by two factors:
 
-1. **Geometric Redundancy (Intersecting Joint Axes):**
-   The standard spatial formula assumes all joint constraints act independently. However, by design, the rotation axes of all five revolute joints (`a`, `b`, `c`, `d`, `e`) converge at a single common point—the **Remote Center of Motion (RCM)** at $O = (0, 0, 0)$. Because both the `RR` limb (`e–d`) and `RRR` limb (`a–b–c`) independently restrict the central platform (`Link 5`) to concentric spherical shells, the three translational degrees of freedom ($X, Y, Z$) are constrained twice. This introduces **$c = 3$ redundant geometric constraints**.
+- **Geometric Redundancy (Intersecting Joint Axes):**
+  The standard spatial formula assumes all joint constraints act independently. However, by design, the rotation axes of all five revolute joints (`a`, `b`, `c`, `d`, `e`) converge at a single common point—the **Remote Center of Motion (RCM)** at $O = (0, 0, 0)$. Because both the `RR` limb (`e–d`) and `RRR` limb (`a–b–c`) independently restrict the central platform (`Link 5`) to concentric spherical shells, the three translational degrees of freedom ($X, Y, Z$) are constrained twice, introducing **$c = 3$ redundant geometric constraints**. Incorporating this term into the **Modified Grübler–Kutzbach equation** resolves the paradox and confirms the true 2-DOF mobility:
 
-   Incorporating the redundant constraint term $c = 3$ into the **Modified Grübler–Kutzbach equation**—or restricting the motion subspace to spherical rotations ($d = 3$)—reveals the true mobility:
+$$\text{DOF}_{\text{modified}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) + c = -1 + 3 = \mathbf{2}$$
 
-   $$\text{DOF}_{\text{modified}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) + c = -1 + 3 = \mathbf{2}$$
-
-   $$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = 12 - 10 = \mathbf{2}$$
-
-2. **Physical Joint Clearances & Structural Compliance in Hardware:**
-   In theoretical kinematics, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to avoid binding. In the physical SLS Nylon 12 prototype, small **radial/axial bearing clearances** at joints `a`–`e` combined with the **elastic compliance** of the curved polymer links (`Link 2`, `Link 3`, `Link 4`) naturally absorb minor geometric misalignments. Consequently, the hardware rotates freely across its workspace without mechanical locking, matching the 2-DOF analytical model.
-
+- **Physical Joint Clearances & Structural Compliance in Hardware:**
+  In theoretical kinematics, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to avoid binding. In the physical SLS Nylon 12 prototype, small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic compliance** of the curved polymer links (`Link 2`, `Link 3`, `Link 4`) naturally absorb minor geometric misalignments, allowing smooth 2-DOF rotation without mechanical locking.
+  
 ## Symbolic Math
 **Requirements**
 - MATLAB (developed in R2026a; R2016b or newer should work)
