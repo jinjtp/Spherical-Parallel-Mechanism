@@ -60,7 +60,7 @@ $$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = \mathbf{2}$$
 
 ### Workspace Analysis
 
-The central platform (`Link 5`) performs pure 2-DOF spherical orientation about the stationary center of rotation with zero linear displacement ($\Delta x = \Delta y = \Delta z = 0$). Using the concentric pivot radii of $r_a = 49\text{ mm}$, $r_e = 45\text{ mm}$, $r_b = r_d = 30\text{ mm}$, and $r_c = 25\text{ mm}$.
+The central platform (`Link 5`) performs pure 2-DOF spherical orientation about the stationary center of rotation with zero linear displacement ($\Delta x = \Delta y = \Delta z = 0$). $r_a = 49\text{ mm}$, $r_e = 45\text{ mm}$, $r_b = r_d = 30\text{ mm}$, and $r_c = 25\text{ mm}$
 
 | Parameter | Value |
 | :--- | :---: |
