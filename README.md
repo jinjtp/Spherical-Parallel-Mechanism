@@ -218,12 +218,12 @@ The time histories quantify the platform response when both inputs are active. T
 
 | Test | Pose | Video Time (s) | Key Angles |
 | --- | --- | ---: | --- |
-| Both inputs active | P1 — First peak | ≈3.9 | Pan ≈ +40°, tilt ≈ −42° |
-| Both inputs active | P2 — Second peak | ≈11.8 | Pan ≈ −40°, tilt ≈ +42° |
-| Single-joint sweeps | A — Start | 0.0 | J1 = 0°, J3 = +90° |
-| J1 sweep and J1 wide sweep | B and C — Reversals | ≈3.9 and ≈11.8 | J3 held at +90° |
-| J3 sweep | B — Reversal | ≈6.3 | J1 = 0°, commanded J3 = +252° |
-| J3 sweep | C — Final frame | 15.7 | J1 = 0°, commanded J3 ≈ −24° |
+| Both inputs active | P1 - First peak | ≈3.9 | Pan ≈ +40°, tilt ≈ −42° |
+| Both inputs active | P2 - Second peak | ≈11.8 | Pan ≈ −40°, tilt ≈ +42° |
+| Single-joint sweeps | A - Start | 0.0 | J1 = 0°, J3 = +90° |
+| J1 sweep and J1 wide sweep | B and C - Reversals | ≈3.9 and ≈11.8 | J3 held at +90° |
+| J3 sweep | B - Reversal | ≈6.3 | J1 = 0°, commanded J3 = +252° |
+| J3 sweep | C - Final frame | 15.7 | J1 = 0°, commanded J3 ≈ −24° |
 
 The J3 angles at B and C in the J3 sweep are from the input command.
 Angles at P1 and P2 are approximate readings from the Simulink Scope plots.
