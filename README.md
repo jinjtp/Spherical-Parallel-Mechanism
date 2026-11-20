@@ -50,13 +50,13 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 $$\text{DOF}_{\text{spatial}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) = 6(5 - 1) - 5(6 - 1) = 24 - 25 = -1$$
 
-- **Kinematic Paradox Resolution ($+3$ Redundant Constraints):** The standard spatial formula assumes all joint constraints act independently. However, because all five revolute axes converge at the common **center of rotation** $O = (0, 0, 0)$, both the `RR` and `RRR` limbs independently restrict translational motion along the $X, Y,$ and $Z$ axes. This introduces **$c = 3$ redundant geometric constraints**, classifying the mechanism as an **over-constrained spherical manipulator** whose true mobility is resolved via the **Modified Grübler–Kutzbach equation** (and verified by the spherical mobility relation $d = 3$):
+- **Kinematic Paradox Resolution ($+3$ Redundant Constraints):** The standard spatial formula assumes all joint constraints act independently. However, because all five revolute axes converge at the common **center of rotation**, both the `RR` and `RRR` limbs independently restrict translational motion along the $X, Y,$ and $Z$ axes. This introduces **$c = 3$ redundant geometric constraints**, classifying the mechanism as an **over-constrained spherical manipulator** whose true mobility is resolved via the **Modified Grübler–Kutzbach equation** (and verified by the spherical mobility relation $d = 3$):
 
 $$\text{DOF}_{\text{modified}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) + c = -1 + 3 = \mathbf{2}$$
 
 $$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = \mathbf{2}$$
 
-- **Physical Mobility in Hardware (Clearances & Compliance):** Theoretically, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to prevent mechanical binding. In the physical SLS 3D-printed prototype (Nylon 12), small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic structural compliance** of the curved polymer links (`Link 2`–`Link 4`) naturally absorb minor geometric tolerances, enabling smooth, lock-free 2-DOF motion.
+- **Physical Mobility in Hardware (Clearances & Compliance):** Theoretically, an over-constrained linkage requires exact manufacturing alignment of all joint axes to prevent mechanical binding. In the physical SLS 3D-printed prototype (Nylon 12), small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic structural compliance** of the curved polymer links (`Link 2`–`Link 4`) naturally absorb minor geometric tolerances, enabling smooth, lock-free 2-DOF motion.
 
 ### Orientation Workspace & Singularity Analysis
 
