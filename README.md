@@ -31,6 +31,10 @@ For this project, we had to choose a mechanism and explain how its input motion 
 
 What we wanted to find out was how much the platform pans and tilts when we turn the two input joints, J1 and J3. We used kinematic equations to relate the input angles to the platform angles, then built a Simscape Multibody model to see how the links move together.
 
+## Kinematic Diagram and DOF Analysis
+
+
+
 ## Symbolic Math
 
 #### Symbolic Math overview
