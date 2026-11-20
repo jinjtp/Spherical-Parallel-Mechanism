@@ -221,7 +221,7 @@ For the proposed solar-tracking application, the platform must be able to change
 
 The fixed base and moving platform are connected by two chains of rigid bodies that form a closed-loop mechanism with five revolute joints. Angular motion is prescribed at J1 and J3. The passive joints, J2, J4, and J5, move according to the constraints of the linkage. The platform orientation is measured relative to the fixed base and expressed as pan and tilt.
 
-![Simscape Multibody block diagram showing the joint-angle inputs and the platform-angle outputs](media/simscape_model.png)
+![Simscape Multibody block diagram showing the joint-angle inputs and the platform-angle outputs](media/simscapemodel.png)
 
 #### Platform Response Under Combined Inputs
 
