@@ -245,55 +245,49 @@ $$\det J = \frac{\cos\theta_1}{\cos^2\theta_1\cos^2\theta_2 + \sin^2\theta_2}$$
 
 ## Simscape Multibody
 
-For the proposed solar-tracking application, the platform must be able to change its orientation in both pan and tilt. The Simscape Multibody model was used to relate these platform angles to the rotation of the two actuated joints at the base.
+For the proposed solar-tracking application, the platform must be able to change its orientation in both pan and tilt. The Simscape Multibody model relates these platform angles to the rotation of the two actuated joints at the base.
 
-![Isometric animation of the spherical parallel mechanism](media/iso.gif)
+![Isometric animation of the spherical parallel mechanism with both joints driven](media/iso.gif)
 
 #### Model Configuration
 
-The fixed base and moving platform are connected by two chains of rigid bodies that form a closed-loop mechanism with five revolute joints. Angular motion is prescribed at J1 and J3. The passive joints, J2, J4, and J5, move according to the constraints of the linkage. The platform orientation is measured relative to the fixed base and expressed as pan and tilt.
+The fixed base and moving platform are connected by two chains of rigid bodies that form a closed-loop mechanism with five revolute joints. Angular motion is prescribed at joint **e** (θ₁, previously J1) and joint **a** (θ₂, previously J3). The passive joints **b**, **c**, and **d** move according to the linkage constraints. The platform orientation is measured relative to the fixed base and expressed as pan and tilt.
 
-![Simscape Multibody block diagram showing the joint-angle inputs and the platform-angle outputs](media/simscapemodel.png)
+![Simscape Multibody block diagram showing the joint-angle inputs and platform-angle outputs](media/simscapemodel.png)
 
 #### Platform Response Under Combined Inputs
 
-J1 and J3 were driven simultaneously with sinusoidal angle commands. The amplitudes were 0.698 rad (40°) at J1 and 0.611 rad (35°) at J3. Both commands had an angular frequency of 0.4 rad/s, corresponding to a period of approximately 15.7 s. The plots show one cycle, with time in seconds and angles in radians.
+Joints **e** and **a** were driven simultaneously with sinusoidal angle commands. The amplitudes were 0.698 rad (40°) at joint **e** and 0.611 rad (35°) at joint **a**. Both commands had an angular frequency of 0.4 rad/s, corresponding to a period of approximately 15.7 s. The plots show one cycle, with time in seconds and angles in radians.
 
-| Platform Pan | Platform Tilt and Measured J3 Angle |
+| Platform Pan | Platform Tilt and Measured Joint a Angle |
 | :---: | :---: |
-| ![Platform pan angle plotted against time](media/scope_pan.png) | ![Platform tilt and measured J3 angle plotted against time](media/scope_tilt_theta2.png) |
+| ![Platform pan angle plotted against time](media/scope_pan.png) | ![Platform tilt and measured joint a angle plotted against time](media/scope_tilt_theta2.png) |
 
-The pan amplitude was approximately 0.70 rad, close to the commanded J1 amplitude. In the right plot, the platform tilt (yellow) had an amplitude of approximately 0.74 rad, compared with 0.61 rad for the measured J3 angle (blue, θ₂). For this test, the platform tilt amplitude exceeded the J3 rotation amplitude by approximately 0.13 rad.
+The platform pan amplitude was approximately 0.70 rad, close to the commanded amplitude at joint **e**. In the right plot, the platform tilt (yellow) reached an amplitude of approximately 0.74 rad, compared with 0.61 rad for the measured angle at joint **a** (blue, θ₂). The difference in amplitude was approximately 0.13 rad for this test.
 
 #### Single-Joint Sweep Tests
 
-The time histories quantify the platform response when both inputs are active. The sweeps below show the motion of the links and platform when each input is applied separately. Both tests started from Position A, with J1 at 0° and J3 at +90°. In each test, one joint was swept while the other was held at its starting angle.
+The combined-input simulation quantifies the platform response when both inputs are active. The sweeps below show how the linkage and platform move when each input is varied separately. Both tests started with joint **e** at 0° and joint **a** at +90°. In each test, one joint was swept while the other was held at its starting angle.
 
-| J1 Sweep - Top View | J3 Sweep - Isometric View |
+| Joint e Sweep — Top View | Joint a Sweep — Isometric View |
 | :---: | :---: |
-| ![Top view of the J1 sweep with J3 held at 90 degrees](media/j1_sweep_top.gif) | ![Isometric view of the J3 sweep with J1 held at zero degrees](media/j3_sweep_iso.gif) |
-
-The J3 angles at B and C in the J3 sweep are from the input command.
-Angles at P1 and P2 are approximate readings from the Simulink Scope plots.
-A dash indicates that the source data did not establish an angle for that pose.
-
-| With J3 fixed at +90°, the top view shows the platform turning relative to the base. | With J1 fixed at 0°, the isometric view shows the change in platform inclination. |
-| [J1 sweep video (MP4)](media/j1_sweep_top.mp4) | [J3 sweep video (MP4)](media/j3sweep_iso.mp4) |
+| ![Top view of the joint e sweep](media/jointesweep.gif) | ![Isometric view of the joint a sweep](media/jointasweep.gif) |
+| Joint **a** was held at +90°. The top view shows the platform turning relative to the base. | Joint **e** was held at 0°. The isometric view shows the change in platform inclination. |
+| [MP4](media/jointesweep.mp4) · [AVI](media/jointesweep.avi) | [MP4](media/jointasweep.mp4) |
 
 #### Reproducing the Combined-Input Simulation
 
 1. Download and extract the repository. Open MATLAB with Simulink, Simscape, and Simscape Multibody installed.
-2. Set the MATLAB Current Folder to `simulation/`. Open `SPM_allR.slx` and click **Run**.
-3. Open **Scope pan** to view the platform pan angle and **Scope tilt,θ2** to compare the platform tilt with the measured J3 angle.
+2. Set the MATLAB Current Folder to `simulation/Simscape Multibody/`. Open `SPM_allR.slx` and click **Run**.
+3. Open **Scope pan** to view the platform pan angle, then open **Scope tilt,θ2** to compare the platform tilt with the measured angle at joint **a**.
 
 | File | Description |
 | --- | --- |
 | [SPM_allR.slx](simulation/Simscape%20Multibody/SPM_allR.slx) | Simscape Multibody model |
 | [spm_params.m](simulation/Simscape%20Multibody/spm_params.m) | Model geometry and input parameters |
-| [CAD files](simulation/cad/) | Geometry of the rigid bodies |
-| [Mechanism.avi](media/Mechanism.avi) | Submission demonstration video |
+| [CAD files](simulation/Simscape%20Multibody/cad/) | Geometry of the rigid bodies |
+| [Combined-input simulation (MP4)](media/iso.mp4) · [AVI](media/iso.avi) | Isometric recording with both joints driven |
 | [Render.jpg](media/Render.jpg) | Isometric render of the mechanism |
-| [Isometric](media/iso.mp4) · [Top](media/Top.mp4) · [Left](media/left.mp4) | Simulation recordings from three viewpoints |
 
 ## Physical prototype
 
