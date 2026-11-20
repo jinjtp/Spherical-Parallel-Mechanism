@@ -269,5 +269,10 @@ Manual actuation tests were conducted by rotating the two base input axes to ver
 
 #### Physical Prototype Demonstration Video
 
-- **Full Motion Demonstration:** [Watch Hardware Video (`hardware/Hardware Video.mov`)](hardware/Hardware%20Video.mov)
-- **Experimental Observations:** The demonstration video illustrates continuous manual actuation of the SLS Nylon 12 prototype across both base input axes (`J1` and `J3`). Rotating the bottom input axis drives the lower curved yoke (`Link 2`), while rotating the side input axis actuates the upper linkage chain (`Link 4+5` and `Link 3`). All five revolute joints rotate smoothly with minimal friction, confirming that the central platform maintains pure spherical orientation around the common Remote Center of Motion (RCM) without mechanical interference or binding.
+The SLS 3D-printed prototype was manually actuated to demonstrate the conversion of two independent base rotations ($\theta_1$ at `J1` and $\theta_2$ at `J3`) into pure 2-DOF spherical orientation of the central platform.
+
+The demonstration animation illustrates the smooth, coordinated motion of the assembled mechanism, confirming that all five revolute joint axes remain aligned with the central Remote Center of Motion (RCM) without link interference or binding across the tested workspace.
+
+Despite these physical tolerances, the prototype successfully validates the kinematic behavior and smooth spherical mobility of the 2-DOF Spherical Parallel Mechanism within its functional operating range.
+
+![Hardware Motion Demonstration](hardware/Hardware%20Video.gif)
