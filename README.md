@@ -31,48 +31,42 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ## Kinematic Diagram and DOF Analysis
 
-### Kinematic Schematic & Spherical Motion Principles
+### 1. Kinematic Schematic & Spherical Architecture
 
 <p align="center">
   <img src="media/Kinematic%20Diagram.jpg" width="65%" alt="Kinematic Diagram" />
 </p>
 
-The kinematic schematic above illustrates the closed-loop spherical architecture comprising **$L = 5$ rigid links** (Link 1–Link 5) and **$J = 5$ single-DOF revolute joints** (a, b, c, d, e, with zero higher-pair joints $J_2 = 0$).
+- **System Topology:** A closed-loop 2-DOF **Spherical Parallel Manipulator (SPM)** comprising **$L = 5$ rigid links** (`Link 1`–`Link 5`) connected by **$J = 5$ single-DOF revolute joints** (`a`, `b`, `c`, `d`, `e`, with zero higher-pair joints $J_2 = 0$).
+- **Common Center of Rotation:** As shown by the dashed blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **center of rotation** located at $O = (0, 0, 0)$. This geometric condition constrains every moving link to concentric spherical surfaces, ensuring the central platform (`Link 5`) exhibits pure 2-DOF spherical orientation with zero linear velocity at the center ($v_O = 0$).
+- **Parallel Kinematic Chains (`RR` and `RRR` Limbs):**
+  - **Lower `RR` Limb (`e` $\rightarrow$ `d`):** The first active input at base joint `e` ($\theta_1$) rotates the lower red curved yoke (`Link 2`) about the vertical $Y$-axis, directly guiding the central ring (`Link 5`) via passive joint `d`.
+  - **Upper `RRR` Limb (`a` $\rightarrow$ `b` $\rightarrow$ `c`):** The second active input at coaxial base joint `a` ($\theta_2$) pivots the upper yellow arch (`Link 4`) about the horizontal $X$-axis, transmitting rotational motion through the intermediate green coupler (`Link 3`) via passive joints `b` and `c`.
+- **Orthogonal Span Geometry:** Adjacent revolute joint axes on each link are arranged at orthogonal ($90^\circ$) angular spans, maintaining constant spherical pivot radii and decoupled pan-tilt actuation across the operating range.
 
-- **Concurrent Axis Geometry (Remote Center of Motion):**
-  As indicated by the dashed blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **Remote Center of Motion (RCM)** located at the origin $O = (0, 0, 0)$. Because every joint axis passes through $O$, all moving links are constrained to concentric spherical surfaces, ensuring the central platform (`Link 5`) undergoes pure 2-DOF spherical orientation without any translational displacement.
-- **Parallel Limb Coupling (`RR` and `RRR` Chains):**
-  - **Lower `RR` Limb (`e` $\rightarrow$ `d`):** The active input at base joint `e` ($\theta_1$) rotates the lower red curved yoke (`Link 2`) about the vertical $Y$-axis, directly guiding the central ring (`Link 5`) through passive joint `d`.
-  - **Upper `RRR` Limb (`a` $\rightarrow$ `b` $\rightarrow$ `c`):** The second active input at coaxial base joint `a` ($\theta_2$) pivots the upper yellow arch (`Link 4`) about the horizontal $X$-axis. Motion is transmitted through intermediate coupler `Link 3` (green) via passive joints `b` and `c` to constrain the second rotational degree of freedom of `Link 5`.
-- **Closed-Loop Spherical Constraint:**
-  The simultaneous intersection of the two kinematic chains at `Link 5` forms a closed spherical loop where orthogonal $90^\circ$ angular spans between adjacent joint axes maintain constant spherical radii throughout the entire workspace.
-  
-#### Degree-of-Freedom (DOF) Analysis & Over-Constrained Paradox
+---
 
-##### 1. General 3D Spatial Mobility (Negative DOF Result)
-In general 3D Euclidean space, an unconstrained rigid body possesses $d = 6$ degrees of freedom (3 translations and 3 rotations). Applying the standard **Chebyshev–Grübler–Kutzbach criterion** to this closed-loop mechanism—comprising $L = 5$ rigid links (`Link 1`–`Link 5`) and $J = 5$ single-DOF revolute joints (`a`, `b`, `c`, `d`, `e`, where $f_i = 1$):
+### 2. Degree-of-Freedom (DOF) & Over-Constrained Paradox
+
+- **General 3D Spatial Mobility (Negative Result):** In 3D Euclidean space ($d = 6$), applying the standard **Chebyshev–Grübler–Kutzbach criterion** to this 5-link, 5-revolute-joint ($f_i = 1$) closed loop yields a negative mobility value, mathematically predicting a statically indeterminate, locked structure:
 
 $$\text{DOF}_{\text{spatial}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) = 6(5 - 1) - 5(6 - 1) = 24 - 25 = -1$$
 
-According to general spatial mobility theory, a calculated result of $\text{DOF} = -1$ mathematically predicts a **statically indeterminate, locked structure** incapable of motion.
-
-##### 2. Resolving the Kinematic Paradox (Why the Physical Hardware Moves)
-Despite the negative mobility prediction, both the Simscape Multibody simulation and the SLS 3D-printed hardware prototype exhibit smooth, controllable **2-DOF motion**. This discrepancy is a classic **kinematic paradox** characteristic of **over-constrained spherical mechanisms**, explained by two factors:
-
-- **Geometric Redundancy (Intersecting Joint Axes):**
-  The standard spatial formula assumes all joint constraints act independently. However, by design, the rotation axes of all five revolute joints (`a`, `b`, `c`, `d`, `e`) converge at a single common point—the **Remote Center of Motion (RCM)** at $O = (0, 0, 0)$. Because both the `RR` limb (`e–d`) and `RRR` limb (`a–b–c`) independently restrict the central platform (`Link 5`) to concentric spherical shells, the three translational degrees of freedom ($X, Y, Z$) are constrained twice, introducing **$c = 3$ redundant geometric constraints**. Incorporating this term into the **Modified Grübler–Kutzbach equation** resolves the paradox and confirms the true 2-DOF mobility:
+- **Kinematic Paradox Resolution ($+3$ Redundant Constraints):** The standard spatial formula assumes all joint constraints act independently. However, because all five revolute axes converge at the common **center of rotation** $O = (0, 0, 0)$, both the `RR` and `RRR` limbs independently restrict translational motion along the $X, Y,$ and $Z$ axes. This introduces **$c = 3$ redundant geometric constraints**, classifying the mechanism as an **over-constrained spherical manipulator** whose true mobility is resolved via the **Modified Grübler–Kutzbach equation** (and verified by the spherical mobility relation $d = 3$):
 
 $$\text{DOF}_{\text{modified}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) + c = -1 + 3 = \mathbf{2}$$
 
-- **Physical Joint Clearances & Structural Compliance in Hardware:**
-  In theoretical kinematics, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to avoid binding. In the physical SLS Nylon 12 prototype, small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic compliance** of the curved polymer links (`Link 2`, `Link 3`, `Link 4`) naturally absorb minor geometric misalignments, allowing smooth 2-DOF rotation without mechanical locking.
+$$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = \mathbf{2}$$
 
-#### Orientation Workspace Geometry (Spherical Cap)
-Because all five revolute joint axes intersect at the stationary **Remote Center of Motion (RCM)** at $O = (0, 0, 0)$, the end-effector (`Link 5`) exhibits zero translational displacement ($\Delta x = \Delta y = \Delta z = 0$). Consequently, the reachable workspace is defined purely in the **orientation domain** as a bounded **spherical patch (cone of rotation)** centered about the vertical $Y$-axis.
+- **Physical Mobility in Hardware (Clearances & Compliance):** Theoretically, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to prevent mechanical binding. In the physical SLS 3D-printed prototype (Nylon 12), small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic structural compliance** of the curved polymer links (`Link 2`–`Link 4`) naturally absorb minor geometric tolerances, enabling smooth, lock-free 2-DOF motion.
 
-Under the simulated sinusoidal actuation profile ($\theta_1(t) = 40^\circ \sin(0.4t)$ at joint `e` and $\theta_2(t) = -35^\circ \sin(0.4t)$ at joint `a` over one full period $T = 15.708\text{ s}$), the platform sweeps a smooth, continuous biaxial orientation envelope without self-collision:
+---
 
-| Motion Parameter / Joint | Angular Range (rad) | Angular Range (deg) | Peak Velocity | Peak Acceleration | Kinematic Role |
+### 3. Orientation Workspace & Singularity Analysis
+
+- **Spherical Orientation Envelope:** With zero translational displacement ($\Delta x = \Delta y = \Delta z = 0$), the end-effector sweeps a bounded spherical orientation cone under the simulated sinusoidal trajectories $\theta_1(t) = 40^\circ \sin(0.4t)$ at joint `e` and $\theta_2(t) = -35^\circ \sin(0.4t)$ at joint `a` over one full period ($T = 15.708\text{ s}$):
+
+| Parameter / Joint | Angular Range (rad) | Angular Range (deg) | Peak Velocity | Peak Acceleration | Kinematic Role |
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **Base Input `e` ($\theta_1$ / Pan)** | $\pm 0.6981\text{ rad}$ | $\pm 40.00^\circ$ | $0.2793\text{ rad/s}$ | $0.1117\text{ rad/s}^2$ | Primary azimuthal rotation ($Y$-axis) |
 | **Base Input `a` ($\theta_2$)** | $\pm 0.6109\text{ rad}$ | $\pm 35.00^\circ$ | $0.2443\text{ rad/s}$ | $0.0977\text{ rad/s}^2$ | Secondary drive (`RRR` limb, $X$-axis) |
@@ -80,9 +74,9 @@ Under the simulated sinusoidal actuation profile ($\theta_1(t) = 40^\circ \sin(0
 | **Passive Joint `b` (`Link 4–3`)** | $0 \text{ to } 0.4486\text{ rad}$ | $0^\circ \text{ to } 25.70^\circ$ | — | — | Intermediate `RRR` coupler articulation |
 | **Passive Joint `c` (`Link 3–5`)** | $\pm 0.5545\text{ rad}$ | $\pm 31.77^\circ$ | — | — | Platform spherical constraint ($Y$-axis) |
 
-- **Tilt Amplification Effect:** Due to the non-linear spherical coupling between the `RR` (`e–d`) and `RRR` (`a–b–c`) limbs, an input amplitude of $\pm 35.00^\circ$ at joint `a` produces a slightly larger output tilt range of **$\pm 42.43^\circ$** ($0.7405\text{ rad}$) at passive joint `d`.
-- **Hardware vs. Simulation Envelope:** While the simulation validates the full $\pm 40^\circ \times \pm 42.43^\circ$ biaxial sweep, physical joint stoppers and the U-frame base geometry (`Link 1`) bound the practical hardware range to approximately $\pm 34^\circ$–$40^\circ$ before mechanical contact occurs.
-  
+- **Tilt Amplification & Physical Limits:** Due to non-linear spherical coupling between the two limbs, a $\pm 35.00^\circ$ input sweep at joint `a` produces an amplified **$\pm 42.43^\circ$** ($0.7405\text{ rad}$) output tilt at passive joint `d` in simulation. In the physical assembly, mechanical clearance against the U-shaped ground frame (`Link 1`) bounds the safe operating sweep to approximately **$\pm 34^\circ$–$40^\circ$**.
+- **Singularity-Free Operation:** Across the entire simulated workspace, the Jacobian determinant remains strictly bounded within **$1.000 \le \det(\mathbf{J}) \le 1.0858$**. Because $\det(\mathbf{J})$ stays close to unity and never approaches zero, the mechanism operates entirely within a **high-dexterity, singularity-free zone** with uniform torque transmission and no self-motion configurations.
+
 ## Symbolic Math
 **Requirements**
 - MATLAB (developed in R2026a; R2016b or newer should work)
