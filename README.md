@@ -31,6 +31,22 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ## Kinematic Diagram and DOF Analysis
 
+#### Kinematic Schematic & Spherical Motion Principles
+
+<p align="center">
+  <img src="media/Kinematic%20Diagram.jpg" width="65%" alt="Kinematic Diagram" />
+</p>
+
+The kinematic schematic above illustrates the closed-loop spherical architecture comprising **$L = 5$ rigid links** (`Link 1`–`Link 5`) and **$J = 5$ single-DOF revolute joints** (`a`, `b`, `c`, `d`, `e`, with zero higher-pair joints $J_2 = 0$).
+
+- **Concurrent Axis Geometry (Remote Center of Motion):**
+  As indicated by the dashed blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **Remote Center of Motion (RCM)** located at the origin $O = (0, 0, 0)$. Because every joint axis passes through $O$, all moving links are constrained to concentric spherical surfaces, ensuring the central platform (`Link 5`) undergoes pure 2-DOF spherical orientation without any translational displacement.
+- **Parallel Limb Coupling (`RR` and `RRR` Chains):**
+  - **Lower `RR` Limb (`e` $\rightarrow$ `d`):** The active input at base joint `e` ($\theta_1$) rotates the lower red curved yoke (`Link 2`) about the vertical $Y$-axis, directly guiding the central ring (`Link 5`) through passive joint `d`.
+  - **Upper `RRR` Limb (`a` $\rightarrow$ `b` $\rightarrow$ `c`):** The second active input at coaxial base joint `a` ($\theta_2$) pivots the upper yellow arch (`Link 4`) about the horizontal $X$-axis. Motion is transmitted through intermediate coupler `Link 3` (green) via passive joints `b` and `c` to constrain the second rotational degree of freedom of `Link 5`.
+- **Closed-Loop Spherical Constraint:**
+  The simultaneous intersection of the two kinematic chains at `Link 5` forms a closed spherical loop where orthogonal $90^\circ$ angular spans between adjacent joint axes maintain constant spherical radii throughout the entire workspace.
+  
 #### Degree-of-Freedom (DOF) Analysis & Over-Constrained Paradox
 
 ##### 1. General 3D Spatial Mobility (Negative DOF Result)
