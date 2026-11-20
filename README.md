@@ -66,6 +66,22 @@ $$\text{DOF}_{\text{modified}} = 6(L - 1) - \sum_{i=1}^{J} (6 - f_i) + c = -1 + 
 
 - **Physical Joint Clearances & Structural Compliance in Hardware:**
   In theoretical kinematics, an over-constrained linkage requires exact manufacturing alignment of all joint axes at $O = (0, 0, 0)$ to avoid binding. In the physical SLS Nylon 12 prototype, small **radial and axial bearing clearances** at joints `a`–`e` combined with the **elastic compliance** of the curved polymer links (`Link 2`, `Link 3`, `Link 4`) naturally absorb minor geometric misalignments, allowing smooth 2-DOF rotation without mechanical locking.
+
+#### Orientation Workspace Geometry (Spherical Cap)
+Because all five revolute joint axes intersect at the stationary **Remote Center of Motion (RCM)** at $O = (0, 0, 0)$, the end-effector (`Link 5`) exhibits zero translational displacement ($\Delta x = \Delta y = \Delta z = 0$). Consequently, the reachable workspace is defined purely in the **orientation domain** as a bounded **spherical patch (cone of rotation)** centered about the vertical $Y$-axis.
+
+Under the simulated sinusoidal actuation profile ($\theta_1(t) = 40^\circ \sin(0.4t)$ at joint `e` and $\theta_2(t) = -35^\circ \sin(0.4t)$ at joint `a` over one full period $T = 15.708\text{ s}$), the platform sweeps a smooth, continuous biaxial orientation envelope without self-collision:
+
+| Motion Parameter / Joint | Angular Range (rad) | Angular Range (deg) | Peak Velocity | Peak Acceleration | Kinematic Role |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Base Input `e` ($\theta_1$ / Pan)** | $\pm 0.6981\text{ rad}$ | $\pm 40.00^\circ$ | $0.2793\text{ rad/s}$ | $0.1117\text{ rad/s}^2$ | Primary azimuthal rotation ($Y$-axis) |
+| **Base Input `a` ($\theta_2$)** | $\pm 0.6109\text{ rad}$ | $\pm 35.00^\circ$ | $0.2443\text{ rad/s}$ | $0.0977\text{ rad/s}^2$ | Secondary drive (`RRR` limb, $X$-axis) |
+| **Passive Joint `d` (Tilt Output)** | $\pm 0.7405\text{ rad}$ | $\pm 42.43^\circ$ | $0.2498\text{ rad/s}$ | $0.1503\text{ rad/s}^2$ | Coupled platform elevation ($X$-axis) |
+| **Passive Joint `b` (`Link 4–3`)** | $0 \text{ to } 0.4486\text{ rad}$ | $0^\circ \text{ to } 25.70^\circ$ | — | — | Intermediate `RRR` coupler articulation |
+| **Passive Joint `c` (`Link 3–5`)** | $\pm 0.5545\text{ rad}$ | $\pm 31.77^\circ$ | — | — | Platform spherical constraint ($Y$-axis) |
+
+- **Tilt Amplification Effect:** Due to the non-linear spherical coupling between the `RR` (`e–d`) and `RRR` (`a–b–c`) limbs, an input amplitude of $\pm 35.00^\circ$ at joint `a` produces a slightly larger output tilt range of **$\pm 42.43^\circ$** ($0.7405\text{ rad}$) at passive joint `d`.
+- **Hardware vs. Simulation Envelope:** While the simulation validates the full $\pm 40^\circ \times \pm 42.43^\circ$ biaxial sweep, physical joint stoppers and the U-frame base geometry (`Link 1`) bound the practical hardware range to approximately $\pm 34^\circ$–$40^\circ$ before mechanical contact occurs.
   
 ## Symbolic Math
 **Requirements**
