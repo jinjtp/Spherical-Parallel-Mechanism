@@ -29,7 +29,7 @@ For this project, we had to choose a mechanism and explain how its input motion 
 
 What we wanted to find out was how much the platform pans and tilts when we turn the two input joints, J1 and J3. We used kinematic equations to relate the input angles to the platform angles, then built a Simscape Multibody model to see how the links move together.
 
-## Kinematic Diagram and DOF Analysis
+## Part I: Basics including kinematic diagram, DoF analysis
 
 ### Kinematic Schematic & Spherical Architecture
 
@@ -68,7 +68,7 @@ The central platform (`Link 5`) performs pure 2-DOF spherical orientation about 
 | **Input angle range at joint `a` ($\theta_2$)** | $-35.00^\circ \text{ to } +35.00^\circ$ ($\pm 0.6109\text{ rad}$) |
 | **Output tilt range at joint `d` (Tilt)** | $-42.43^\circ \text{ to } +42.43^\circ$ ($\pm 0.7405\text{ rad}$) |
 
-## Symbolic Math
+## Part II: Symbolic Math
 **Requirements**
 - MATLAB (developed in R2026a; R2016b or newer should work)
 - Symbolic Math Toolbox
@@ -228,7 +228,7 @@ $$\det J = \frac{\cos\theta_1}{\cos^2\theta_1\cos^2\theta_2 + \sin^2\theta_2}$$
 - The animation uses simplified shapes (arcs, rings and pins) sized from the CAD parts, not the CAD geometry itself.
 - Kinematics only: masses, gravity and joint torques are not modelled.
 
-## Simscape Multibody
+## Part III: Simscape Multibody 
 
 For the proposed solar-tracking application, the platform must be able to change its orientation in both pan and tilt. The Simscape Multibody model relates these platform angles to the rotation of the two actuated joints at the base.
 
@@ -274,7 +274,7 @@ The combined-input simulation quantifies the platform response when both inputs 
 | [Combined-input simulation (MP4)](media/iso.mp4) · [AVI](media/iso.avi) | Isometric recording with both joints driven |
 | [Render.jpg](media/Render.jpg) | Isometric render of the mechanism |
 
-## Physical prototype
+## Part IV: Built Mechanism
 
 3D CAD assembly of the 2-DOF Spherical Parallel Mechanism modeled in Autodesk Fusion 360, illustrating the neutral home configuration, single-axis actuation at joint `a`, and bidirectional base rotation sweeps at joint `e`:
 
