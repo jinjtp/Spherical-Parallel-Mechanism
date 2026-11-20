@@ -31,13 +31,13 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 
 ## Kinematic Diagram and DOF Analysis
 
-#### Kinematic Schematic & Spherical Motion Principles
+### Kinematic Schematic & Spherical Motion Principles
 
 <p align="center">
   <img src="media/Kinematic%20Diagram.jpg" width="65%" alt="Kinematic Diagram" />
 </p>
 
-The kinematic schematic above illustrates the closed-loop spherical architecture comprising **$L = 5$ rigid links** (`Link 1`–`Link 5`) and **$J = 5$ single-DOF revolute joints** (`a`, `b`, `c`, `d`, `e`, with zero higher-pair joints $J_2 = 0$).
+The kinematic schematic above illustrates the closed-loop spherical architecture comprising **$L = 5$ rigid links** (Link 1–Link 5) and **$J = 5$ single-DOF revolute joints** (a, b, c, d, e, with zero higher-pair joints $J_2 = 0$).
 
 - **Concurrent Axis Geometry (Remote Center of Motion):**
   As indicated by the dashed blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **Remote Center of Motion (RCM)** located at the origin $O = (0, 0, 0)$. Because every joint axis passes through $O$, all moving links are constrained to concentric spherical surfaces, ensuring the central platform (`Link 5`) undergoes pure 2-DOF spherical orientation without any translational displacement.
