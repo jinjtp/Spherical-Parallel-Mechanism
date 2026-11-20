@@ -38,7 +38,7 @@ What we wanted to find out was how much the platform pans and tilts when we turn
 </p>
 
 - **System Topology:** A closed-loop 2-DOF **Spherical Parallel Manipulator (SPM)** comprising **$L = 5$ rigid links** (`Link 1`–`Link 5`) connected by **$J = 5$ single-DOF revolute joints** (`a`, `b`, `c`, `d`, `e`, with zero higher-pair joints $J_2 = 0$).
-- **Common Center of Rotation:** As shown by the dashed blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **center of rotation**. This geometric condition constrains every moving link to concentric spherical surfaces, ensuring the central platform (`Link 5`) exhibits pure 2-DOF spherical orientation with zero linear velocity at the center ($v_O = 0$).
+- **Common Center of Rotation:** As shown by the dashed blue centerlines, the rotation axes of all five revolute joints intersect at a single stationary point—the **center of rotation**. This geometric condition constrains every moving link to concentric spherical surfaces, ensuring the central platform (`Link 5`) exhibits pure 2-DOF spherical orientation.
 - **Parallel Kinematic Chains (`RR` and `RRR` Limbs):**
   - **Lower `RR` Limb (`e` $\rightarrow$ `d`):** The first active input at base joint `e` ($\theta_1$) rotates the lower red curved yoke (`Link 2`) about the vertical $Y$-axis, directly guiding the central ring (`Link 5`) via passive joint `d`.
   - **Upper `RRR` Limb (`a` $\rightarrow$ `b` $\rightarrow$ `c`):** The second active input at coaxial base joint `a` ($\theta_2$) pivots the upper yellow arch (`Link 4`) about the horizontal $X$-axis, transmitting rotational motion through the intermediate green coupler (`Link 3`) via passive joints `b` and `c`.
