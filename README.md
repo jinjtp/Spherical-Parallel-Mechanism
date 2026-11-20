@@ -258,7 +258,7 @@ Manual actuation tests were conducted by rotating the two base input axes to ver
 
 #### Physical Prototype Demonstration Video
 
-The SLS 3D-printed prototype was manually actuated to demonstrate the conversion of two independent base rotations ($\theta_1$ at `J1` and $\theta_2$ at `J3`) into pure 2-DOF spherical orientation of the central platform.
+The SLS 3D-printed prototype was manually actuated to demonstrate the conversion of two independent base rotations (J1 and J3) into pure 2-DOF spherical orientation of the central platform.
 
 The demonstration animation illustrates the smooth, coordinated motion of the assembled mechanism, confirming that all five revolute joint axes remain aligned with the central Remote Center of Motion (RCM) without link interference or binding across the tested workspace.
 
