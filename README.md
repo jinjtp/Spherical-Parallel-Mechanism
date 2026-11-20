@@ -213,6 +213,28 @@ The time histories quantify the platform response when both inputs are active. T
 | J1 Sweep - Top View | J3 Sweep - Isometric View |
 | :---: | :---: |
 | ![Top view of the J1 sweep with J3 held at 90 degrees](media/j1_sweep_top.gif) | ![Isometric view of the J3 sweep with J1 held at zero degrees](media/j3_sweep_iso.gif) |
+
+#### Key Poses in the Animations
+
+| Motion | Pose | Video Time (s) | J1 (°) | J3 (°) | Pan (°) | Tilt (°) | Event |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
+| J1 sweep | A | 0.00, ≈7.87 | 0 | +90 | — | — | Start and return through Position A |
+| J1 sweep | B | ≈3.93 | — | +90 | — | — | First J1 reversal |
+| J1 sweep | C | ≈11.80 | — | +90 | — | — | Second J1 reversal |
+| J1 wide sweep | A | 0.00, ≈7.87 | 0 | +90 | — | — | Start and return through Position A |
+| J1 wide sweep | B | ≈3.93 | — | +90 | — | — | First J1 reversal |
+| J1 wide sweep | C | ≈11.80 | — | +90 | — | — | Second J1 reversal |
+| J3 sweep | A | 0.00, ≈12.60 | 0 | +90 | — | — | Start and return through Position A |
+| J3 sweep | B | ≈6.30 | 0 | +252 | — | — | J3 reversal at the maximum commanded angle |
+| J3 sweep | C | 15.70 | 0 | ≈−24 | — | — | Final frame with J3 still moving |
+| Both inputs active | Home | 0.00, ≈7.87 | — | — | — | — | Start and passage near the home pose |
+| Both inputs active | P1 | ≈3.93 | — | ≈−35 | ≈+40 | ≈−42 | First turn |
+| Both inputs active | P2 | ≈11.80 | — | ≈+35 | ≈−40 | ≈+42 | Second turn |
+
+The J3 angles at B and C in the J3 sweep are from the input command.
+Angles at P1 and P2 are approximate readings from the Simulink Scope plots.
+A dash indicates that the source data did not establish an angle for that pose.
+
 | With J3 fixed at +90°, the top view shows the platform turning relative to the base. | With J1 fixed at 0°, the isometric view shows the change in platform inclination. |
 | [J1 sweep video (MP4)](media/j1_sweep_top.mp4) | [J3 sweep video (MP4)](media/j3sweep_iso.mp4) |
 
