@@ -60,11 +60,10 @@ $$\text{DOF}_{\text{spherical}} = 3(L - 1) - 2J = 3(5 - 1) - 2(5) = \mathbf{2}$$
 
 ### Workspace Analysis
 
-The central platform (`Link 5`) performs pure 2-DOF spherical orientation about the stationary center of rotation $O = (0, 0, 0)$ with zero linear displacement ($\Delta x = \Delta y = \Delta z = 0$). Using the concentric pivot radii of $r_a = 49\text{ mm}$, $r_e = 45\text{ mm}$, $r_b = r_d = 30\text{ mm}$, and $r_c = 25\text{ mm}$, the orientation workspace was evaluated in MATLAB.
+The central platform (`Link 5`) performs pure 2-DOF spherical orientation about the stationary center of rotation with zero linear displacement ($\Delta x = \Delta y = \Delta z = 0$). Using the concentric pivot radii of $r_a = 49\text{ mm}$, $r_e = 45\text{ mm}$, $r_b = r_d = 30\text{ mm}$, and $r_c = 25\text{ mm}$, the orientation workspace was evaluated in MATLAB.
 
 | Parameter | Value |
 | :--- | :---: |
-| **Center of rotation ($O$)** | $(0, 0, 0)\text{ mm}$ |
 | **Input angle range at joint `e` ($\theta_1$ / Pan)** | $-40.00^\circ \text{ to } +40.00^\circ$ ($\pm 0.6981\text{ rad}$) |
 | **Input angle range at joint `a` ($\theta_2$)** | $-35.00^\circ \text{ to } +35.00^\circ$ ($\pm 0.6109\text{ rad}$) |
 | **Output tilt range at joint `d` (Tilt)** | $-42.43^\circ \text{ to } +42.43^\circ$ ($\pm 0.7405\text{ rad}$) |
