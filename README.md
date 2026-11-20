@@ -2,13 +2,11 @@
 
 Term Project 2569 · 2103-322 Design of Mechanism
 
-## Repository structure
-
 | Path | Purpose |
 | --- | --- |
-| `hardware/mechanical/` | CAD models, drawings, and fabrication files |
-| `simulation/` | Models, scripts, assumptions, and simulation results |
-| `docs/` | Assembly, setup, operation, and maintenance instructions |
+| `hardware` | CAD models |
+| `simulation/Simscape Multibody` | Simscape Mulyibody files |
+| `simulation/Symbolic Mathematics` | Symbolic Math scripts |
 | `media/` | Images, GIFs, and links to demonstration videos |
 | `publications/` | Project-related journal and conference papers |
 
@@ -23,7 +21,7 @@ Term Project 2569 · 2103-322 Design of Mechanism
   - Pavida Mayudee 6730413321
   - Puntira Chatthammarak 6730400121
 - **Status** — Finish
-- **Last updated** — 2026-11-19
+- **Last updated** — 2026-11-20
 
 ## Motivation
 
@@ -31,24 +29,14 @@ For this project, we had to choose a mechanism and explain how its input motion 
 
 What we wanted to find out was how much the platform pans and tilts when we turn the two input joints, J1 and J3. We used kinematic equations to relate the input angles to the platform angles, then built a Simscape Multibody model to see how the links move together.
 
-## Kinematic Diagram and DOF Analysis
-
-
-
 ## Symbolic Math
-
-#### Symbolic Math overview
-The panel is held by two kinematic chains (legs) that both start on the fixed base. Two input angles are applied at the base:
-- θ1 at joint J1, which pans the panel
-- θ2 at joint J3, which tilts the panel through the second leg
-  
 #### Requirements
 - MATLAB (developed in R2026a; R2016b or newer should work)
 - Symbolic Math Toolbox
   
 #### How to run
-1. Open Symbolic_Math_v6_1.mlx in MATLAB.
-2. Adjust the settings in section 0 if needed (see below).
+1. Open [Symbolic_Math_v6_1.mlx](docs/Symbolic_Math_v6_1.mlx) in MATLAB.
+2. Adjust the settings in section 0 if needed.
 3. Click Run All.
 
 The live script is organised in sections:
@@ -65,9 +53,15 @@ The live script is organised in sections:
 | 7 | Animation |
 
 Comments were provided inside the script for better understanding of its function.
+#### Symbolic Math overview
+The panel is held by two kinematic chains (legs) that both start on the fixed base. Two input angles are applied at the base:
+- θ1 at joint J1, which pans the panel
+- θ2 at joint J3, which tilts the panel through the second leg
+- The two legs are:
+  - Leg A: Base → J1 → Link2 (half ring) → J2 → Platform
+  - Leg B: Base → J3 → Link4+5 (upper arm) → J4 → Link3 (fork) → J5 → Platform
 
 #### Kinematic analysis
-
 ##### Mechanism
 
 All joints are revolute, and every joint axis passes through the centre point O = (0, 0, 0), which makes this a spherical mechanism.
@@ -86,15 +80,109 @@ The inputs are
 \theta_1(t) = A_1 \sin(\omega_1 t), \qquad \theta_2(t) = A_2 \sin(\omega_2 t)
 ```
 
-<!-- Add the mechanism diagram, link and joint labels, degree-of-freedom calculation, and kinematic equations here. -->
+| Variable | Meaning | Value |
+| --- | --- | --- |
+| A1, A2 | Input amplitudes, entered in degrees and converted to rad | 40°, −35° |
+| w1, w2 | Input frequencies (rad/s) | 0.4, 0.4 |
+| t | Simulation time, one full period | 15.708 |
 
-#### Results and plots
+##### Degrees of freedom
 
-<!-- Add the plots here. Label the axes and units, and state the joint inputs used for each case. -->
 
-#### Symbolic simulation
+$$DOF = 3(n - 1) - 2j_1 - j_2$$
 
-<!-- Add images or videos from the symbolic simulation and a link to the MATLAB Live Script here. -->
+n = 5 links (base, Link2, Link4+5, Link3, platform)
+j1 = 5 full joints (J1–J5, all revolute)
+j2 = 0 half joints
+
+
+$$DOF=3(5-1)-2(5)-0=2$$
+
+This confirms θ1 and θ2 are the inputs.
+##### Symbolic Kinemnatics
+The angles of the passive joints J2, J4 and J5 are named `jj2`, `jj4` and `jj5` in the code (written jj2,jj4,jj5). Each leg gives the platform orientation as a product of rotations:
+
+
+$$RA=Ry(1)Rx(jj2),RB=Rx(2)Rz(jj4)Ry(jj5)$$
+
+Loop closure. Link3 keeps the J4 axis perpendicular to the J5 axis:
+
+$$\mathbf{u}_4 \cdot \mathbf{u}_5 = 0, \qquad \mathbf{u}_4 = R_x(\theta_2)\,\hat{z}, \quad \mathbf{u}_5 = R_A\,\hat{y}$$
+
+which gives
+
+$$\cos\theta_1 \cos\theta_2 \sin jj_2 - \sin\theta_2 \cos jj_2 = 0$$
+
+Pan and tilt (assembly branch with cos jj2 > 0):
+
+$$\text{pan} = \theta_1, \text{tilt} = jj_2 = {arctan2}(\sin\theta_2,\ \cos\theta_1\cos\theta_2)$$
+
+These follow from the platform rotation matrix: pan = arctan2(R13, R33) and tilt = arctan2(−R23, R22).
+
+Passive joints of leg B, from Rx(2)TRA=Rz(jj4)Ry(jj5)=M
+
+$$jj_4 = \{arctan2}(-M_{12},\, M_{22}), \qquad jj_5 = {arctan2}(-M_{31},\, M_{33})$$
+
+##### Velocity, acceleration and singularity
+Velocities and accelerations are found by differentiating pan(t) and tilt(t) symbolically with `diff`.The Jacobian relates input rates to output rates:
+
+```math
+$$\begin{bmatrix}\dot{\text{pan}} \\ \dot{\text{tilt}}\end{bmatrix} = J \begin{bmatrix}\dot\theta_1 \\ \dot\theta_2\end{bmatrix}, \qquad
+J = \begin{bmatrix} 1 & 0 \\ \dfrac{\partial\,\text{tilt}}{\partial\theta_1} & \dfrac{\partial\,\text{tilt}}{\partial\theta_2} \end{bmatrix}$$
+```
+
+$$\det J = \frac{\cos\theta_1}{\cos^2\theta_1\cos^2\theta_2 + \sin^2\theta_2}$$
+
+- det J = 1: tilt changes one-to-one with θ2 (this is the case at θ1 = 0).
+- det J → 0 at |θ1| = π/2: a singularity. There θ2 no longer changes the tilt, so the panel can't be controlled in that direction. From the symbolic math, det J is never close to zero. The motion never comes close to the singularity. 
+  
+#### Results 
+##### Summary Table
+
+| Parameter | Value |
+| --- | --- |
+| max pan | 0.6981 rad |
+| max tilt | 0.7405 rad |
+| max pan velocity | 0.2793 rad/s |
+| max tilt velocity | 0.2498 rad/s |
+| max pan acceleration | 0.1117 rad/s² |
+| max tilt acceleration | 0.1503 rad/s² |
+| J2 range (= tilt) | ±0.7405 rad |
+| J4 range | 0 to 0.4486 rad |
+| J5 range | ±0.5545 rad |
+| det J range | 1.000 to 1.086 | 
+
+##### Figures
+| Figure | Descrption |
+| --- | --- |
+| Input angle | θ1 and θ2 vs time |
+| Pan & Tilt | Pan vs time; tilt vs time with θ2 for comparison |
+| Velocity & Acceleration | Pan and tilt rates and accelerations |
+| Passive joints | Angles of J2 (= tilt), J4 and J5 vs time |
+| Pan-tilt path | Tilt vs pan: the directions the panel points during the motion |
+
+![Input angle](media/Input_angle.png)
+
+![Pan vs Time](media/pan_angle.png) 
+
+![Tilt vs Time](media/tilt_angle.png)
+
+|  |  |
+| :---: | :---: |
+| ![Pan velocity](media/pan_v.png) | ![Tilt velocity](media/tilt_v.png) 
+| ![Pan acceleration](media/pan_a.png) | ![Tilt acceleration](media/tilt_a.png) |
+
+![Passive joints](media/passive_joints.png)
+
+![Pan-tilt path](media/panel_path.png)
+
+##### Symbolic simulation
+
+![symbolic math simulation](media/symbolic_math_ani.gif)
+
+##### Limitations
+- The animation uses simplified shapes (arcs, rings and pins) sized from the CAD parts, not the CAD geometry itself.
+- Kinematics only: masses, gravity and joint torques are not modelled.
 
 ## Simscape Multibody
 
