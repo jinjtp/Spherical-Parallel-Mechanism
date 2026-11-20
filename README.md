@@ -132,8 +132,8 @@ The time histories quantify the platform response when both inputs are active. T
 
 | File | Description |
 | --- | --- |
-| [SPM_allR.slx](simulation/Simscape Multibody/SPM_allR.slx) | Simscape Multibody model |
-| [spm_params.m](simulation/Sismcape Multibody/spm_params.m) | Model geometry and input parameters |
+| [SPM_allR.slx](simulation/Simscape%20Multibody/SPM_allR.slx) | Simscape Multibody model |
+| [spm_params.m](simulation/Simscape%20Multibody/spm_params.m) | Model geometry and input parameters |
 | [CAD files](simulation/cad/) | Geometry of the rigid bodies |
 | [Mechanism.avi](media/Mechanism.avi) | Submission demonstration video |
 | [Render.jpg](media/Render.jpg) | Isometric render of the mechanism |
